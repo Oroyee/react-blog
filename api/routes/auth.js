@@ -19,7 +19,7 @@ router.post("/register", async (req,res)=>{
     } catch(err){
         res.status(500).json(err);
     }
-})
+});
 
 //LOGIN
 router.post("/login", async (req,res)=>{
