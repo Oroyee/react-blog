@@ -11,10 +11,12 @@ import {
   Route,
   Link
 } from "react-router-dom";
+import { useContext } from "react";
+import { Context } from "./context/Context";
 
 // If you are using react-router-dom v6, it looks like Switch has been replaced with Routes.
 function App() {
-  const user = false;
+  const {user} = useContext(Context);
   return (
     <Router>
         <TopBar/>
