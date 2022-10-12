@@ -17,7 +17,7 @@ import { Context } from "./context/Context";
 // If you are using react-router-dom v6, it looks like Switch has been replaced with Routes.
 function App() {
   const {user} = useContext(Context);
-  fetch("https://oroblog.herokuapp.com/").then(res => res.json()).then(data => console.log(data))
+  fetch("https://oroblog.herokuapp.com/").then(res => res.json()).then(data => console.log(data));
   return (
     <Router>
         <TopBar/>

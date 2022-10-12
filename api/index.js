@@ -8,8 +8,10 @@ const postRoute = require("./routes/posts");
 const categoryRoute = require("./routes/categories");
 const multer = require("multer");
 const path = require("path");
+const cors = require("cors");
 
 dotenv.config();
+app.use(cors());
 app.use(express.json());
 app.use("/images", express.static(path.join(__dirname, "/images")));
 
@@ -38,6 +40,7 @@ const upload = multer({ storage: storage });
 app.post("/api/upload", upload.single("file"), (req, res) => {
   res.status(200).json("File has been uploaded");
 });
+
 
 app.use("/api/auth", authRoute);
 app.use("/api/users", userRoute);

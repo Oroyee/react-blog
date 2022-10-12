@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "bcrypt": "^5.0.1",
+    "cors": "^2.8.5",
     "dotenv": "^16.0.2",
     "express": "^4.18.1",
     "mongoose": "^6.6.2",
@@ -12,8 +13,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "engines": {
-    "node":"18.10.0",
-    "yarn":"1.22.19"
+    "node": "18.10.0",
+    "yarn": "1.22.19"
   },
   "devDependencies": {},
   "scripts": {
@@ -21,5 +22,5 @@
   },
   "author": "",
   "license": "ISC",
-  "description": "" 
+  "description": ""
 }
