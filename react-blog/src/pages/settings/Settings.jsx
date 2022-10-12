@@ -13,7 +13,7 @@ export default function Settings() {
     const [success, setSuccess] = useState(false);
 
     const {user, dispatch} = useContext(Context);
-    const PF = "http://localhost:5000/images/"
+    const PF = "https://oroblog.herokuapp.com/images/";
 
     const handleSubmit = async(e) =>{
         e.preventDefault();
@@ -32,7 +32,7 @@ export default function Settings() {
             data.append("file", file);
             updatedUser.profilePic = filename;
             try{
-                await axios.post("/upload",data);
+                await axios.post("https://oroblog.herokuapp.com/api/upload",data);
             }catch(err){}
         }
         try {
@@ -44,12 +44,21 @@ export default function Settings() {
         }
     };
 
+    const handleDelete = async() => {
+        try {
+          await axios.delete(`https://oroblog.herokuapp.com/api/users/${user._id}`, {
+            data:{username:user.username},
+        });
+          window.location.replace("/");
+        } catch (error) {}
+      };
+
   return (
     <div className="settings">
         <div className="settingsWrapper">
             <div className="settingsTitle">
                 <span className="settingsUpdateTitle">Update Your Account</span>
-                <span className="settingsDeleteTitle">Delete Account</span>
+                <span className="settingsDeleteTitle" onClick={handleDelete}>Delete Account</span>
             </div>
             <form className="settingsForm" onSubmit={handleSubmit}>
                 <label>Profile Picture</label>
