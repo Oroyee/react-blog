@@ -11,11 +11,15 @@
   "name": "api",
   "version": "1.0.0",
   "main": "index.js",
+  "engines": {
+    "node":"18.10.0",
+    "yarn":"1.22.19"
+  },
   "devDependencies": {},
   "scripts": {
     "start": "nodemon -L index.js"
   },
   "author": "",
   "license": "ISC",
-  "description": ""
+  "description": "" 
 }
