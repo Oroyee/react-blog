@@ -4,6 +4,7 @@ import axios from "axios"
 import { useContext } from "react"
 import { Context } from "../../context/Context"
 
+
 export default function Write() {
     const [title, setTitle] = useState("");
     const [desc, setDesc] = useState("");
@@ -19,23 +20,40 @@ export default function Write() {
         };
 
         if(file){
+            // const data =  new FormData();
+            // const filename = Date.now() + file.name;
+            // data.append("name", filename);
+            // data.append("file", file);
+            // newPost.photo = filename;
+            // try{
+            //     // await axios.post("https://oroblog.herokuapp.com/api/upload",data);
+            //     await axios.post("/upload",data);
+            // }catch(err){}
             const data =  new FormData();
-            const filename = Date.now() + file.name;
-            data.append("name", filename);
-            data.append("file", file);
-            newPost.photo = filename;
+            var reader = new FileReader();
+            reader.readAsDataURL(file);
+            reader.onload = function(e){
+                var imgcode = e.target.result;
+                console.log(imgcode);
+                newPost.photo = imgcode;
+                data.append("file",imgcode);
+            }
             try{
-                await axios.post("https://oroblog.herokuapp.com/api/upload",data);
+                await axios.post("/upload", data);
+                // await axios.post("https://oroblog.herokuapp.com/api/upload",data);
             }catch(err){}
         }
         try {
-            const res = await axios.post("https://oroblog.herokuapp.com/api/posts",newPost);
+            // const res = await axios.post("https://oroblog.herokuapp.com/api/posts",newPost);
+            const res = await axios.post("/posts",newPost);
+            await new Promise(resolve => setTimeout(resolve, 10000));
             window.location.replace("/post/"+res.data._id);
         } catch (error) {}
     };
   return (
     <div className="write">
         {file &&
+        // <img className="writeImg" src={URL.createObjectURL(file)} alt="" />
         <img className="writeImg" src={URL.createObjectURL(file)} alt="" />
         }
         <form className="writeForm" onSubmit={handleSubmit}>
