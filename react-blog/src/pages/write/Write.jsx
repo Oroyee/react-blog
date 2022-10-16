@@ -46,7 +46,7 @@ export default function Write() {
         try {
             // const res = await axios.post("https://oroblog.herokuapp.com/api/posts",newPost);
             const res = await axios.post("/posts",newPost);
-            await new Promise(resolve => setTimeout(resolve, 10000));
+            // await new Promise(resolve => setTimeout(resolve, 10000));
             window.location.replace("/post/"+res.data._id);
         } catch (error) {}
     };
