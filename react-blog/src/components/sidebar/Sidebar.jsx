@@ -37,10 +37,18 @@ export default function Sidebar() {
         <div className="sidebarItem">
             <span className="sidebarTitle">FOLLOW US</span>
             <div className="sidebarSocial">
-                <i className="sidebarIcon fa-brands fa-square-twitter"></i>
-                <i className="sidebarIcon fa-brands fa-square-pinterest"></i>
-                <i className="sidebarIcon fa-brands fa-square-facebook"></i>
-                <i className="sidebarIcon fa-brands fa-square-instagram"></i>
+                <a target="_blank" href="https://www.youtube.com/channel/UCfvTULySWBBbZ3sH-5SvOMg">
+                    <i className="sidebarIcon fa-brands fa-square-youtube"></i>
+                </a>
+                <a target="_blank" href="https://www.linkedin.com/in/jeff-zhan-5202b0215/">
+                    <i className="sidebarIcon fa-brands fa-linkedin"></i>
+                </a>
+                <a target="_blank" href="https://www.facebook.com/profile.php?id=100001015279689">
+                    <i className="sidebarIcon fa-brands fa-square-facebook"></i>
+                </a>
+                <a target="_blank" href="https://www.instagram.com/oroyeee/">
+                    <i className="sidebarIcon fa-brands fa-square-instagram"></i>
+                </a>
             </div>
         </div>
     </div>

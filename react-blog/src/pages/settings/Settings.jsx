@@ -26,12 +26,25 @@ export default function Settings() {
         };
 
         if(file){
+            // const data =  new FormData();
+            // const filename = Date.now() + file.name;
+            // data.append("name", filename);
+            // data.append("file", file);
+            // updatedUser.profilePic = filename;
+            // try{
+            //     await axios.post("https://oroblog.herokuapp.com/api/upload",data);
+            // }catch(err){}
             const data =  new FormData();
-            const filename = Date.now() + file.name;
-            data.append("name", filename);
-            data.append("file", file);
-            updatedUser.profilePic = filename;
+            var reader = new FileReader();
+            reader.readAsDataURL(file);
+            reader.onload = function(e){
+                var imgcode = e.target.result;
+                console.log(imgcode);
+                updatedUser.profilePic = imgcode;
+                data.append("file",imgcode);
+            }
             try{
+                // await axios.post("/upload", data);
                 await axios.post("https://oroblog.herokuapp.com/api/upload",data);
             }catch(err){}
         }
@@ -63,7 +76,7 @@ export default function Settings() {
             <form className="settingsForm" onSubmit={handleSubmit}>
                 <label>Profile Picture</label>
                 <div className="settingsPP">
-                    <img src={file ? URL.createObjectURL(file) : PF+user.profilePic} alt="" />
+                    <img src={file ? URL.createObjectURL(file) : user.profilePic} alt="" />
                     <label htmlFor="fileInput">
                         <i className="settingsPPIcon far fa-circle-user"></i>
                     </label>

@@ -48,7 +48,7 @@ export default function Register() {
             placeholder="Enter your password..."
             onChange={e=>setPassword(e.target.value)}
           />
-          <button className="registerButton" type="submit">Register</button>
+          {/* <button className="registerButton" type="submit">Register</button> */}
         </form>
         <button className="registerLoginButton">
         <Link className="link" to="/login">Login</Link>
