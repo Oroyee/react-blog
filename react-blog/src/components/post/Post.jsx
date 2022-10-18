@@ -2,7 +2,7 @@ import "./post.css"
 import {Link, useLocation} from "react-router-dom"
 
 export default function Post({post}) {
-  const PF = "https://oroblog.herokuapp.com/images/"
+  const PF = "https://oro-blog-production.up.railway.app/images/"
 
   return (
     <div className="post">

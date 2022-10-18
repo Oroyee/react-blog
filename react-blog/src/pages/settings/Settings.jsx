@@ -13,7 +13,7 @@ export default function Settings() {
     const [success, setSuccess] = useState(false);
 
     const {user, dispatch} = useContext(Context);
-    const PF = "https://oroblog.herokuapp.com/images/";
+    const PF = "https://oro-blog-production.up.railway.app/images/";
 
     const handleSubmit = async(e) =>{
         e.preventDefault();
@@ -45,11 +45,11 @@ export default function Settings() {
             }
             try{
                 // await axios.post("/upload", data);
-                await axios.post("https://oroblog.herokuapp.com/api/upload",data);
+                await axios.post("https://oro-blog-production.up.railway.app/api/upload",data);
             }catch(err){}
         }
         try {
-            const res = await axios.put("https://oroblog.herokuapp.com/api/users/" +user._id, updatedUser);
+            const res = await axios.put("https://oro-blog-production.up.railway.app/api/users/" +user._id, updatedUser);
             setSuccess(true);
             dispatch({type:"UPDATE_SUCCESS", payload:res.data});
         } catch (error) {
@@ -59,7 +59,7 @@ export default function Settings() {
 
     const handleDelete = async() => {
         try {
-          await axios.delete(`https://oroblog.herokuapp.com/api/users/${user._id}`, {
+          await axios.delete(`https://oro-blog-production.up.railway.app/api/users/${user._id}`, {
             data:{username:user.username},
         });
           window.location.replace("/");

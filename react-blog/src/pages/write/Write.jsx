@@ -42,11 +42,11 @@ export default function Write() {
             }
             try{
                 // await axios.post("/upload", data);
-                await axios.post("https://oroblog.herokuapp.com/api/upload",data);
+                await axios.post("https://oro-blog-production.up.railway.app/api/upload",data);
             }catch(err){}
         }
         try {
-            const res = await axios.post("https://oroblog.herokuapp.com/api/posts",newPost);
+            const res = await axios.post("https://oro-blog-production.up.railway.app/api/posts",newPost);
             // const res = await axios.post("/posts",newPost);
             // await new Promise(resolve => setTimeout(resolve, 10000));
             window.location.replace("/post/"+res.data._id);
