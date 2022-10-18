@@ -40,6 +40,10 @@
     width: 70vw;
 }
 
+.writeCategories{
+    font-size: 20px;
+}
+
 .writeInput:focus{
     outline: none;
 }

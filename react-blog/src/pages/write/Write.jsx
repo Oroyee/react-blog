@@ -9,6 +9,7 @@ export default function Write() {
     const [title, setTitle] = useState("");
     const [desc, setDesc] = useState("");
     const [file, setFile] = useState(null);
+    const [categories, setCategories] = useState("");
     const {user}= useContext(Context);
 
     const handleSubmit = async(e) =>{
@@ -17,6 +18,7 @@ export default function Write() {
             username:user.username,
             title,
             desc,
+            categories,
         };
 
         if(file){
@@ -39,13 +41,13 @@ export default function Write() {
                 data.append("file",imgcode);
             }
             try{
-                await axios.post("/upload", data);
-                // await axios.post("https://oroblog.herokuapp.com/api/upload",data);
+                // await axios.post("/upload", data);
+                await axios.post("https://oroblog.herokuapp.com/api/upload",data);
             }catch(err){}
         }
         try {
-            // const res = await axios.post("https://oroblog.herokuapp.com/api/posts",newPost);
-            const res = await axios.post("/posts",newPost);
+            const res = await axios.post("https://oroblog.herokuapp.com/api/posts",newPost);
+            // const res = await axios.post("/posts",newPost);
             // await new Promise(resolve => setTimeout(resolve, 10000));
             window.location.replace("/post/"+res.data._id);
         } catch (error) {}
@@ -63,6 +65,9 @@ export default function Write() {
                 </label>
                 <input type="file" id="fileInput" style={{display:"none"}} onChange={e=>setFile(e.target.files[0])} />
                 <input type="text" placeholder="Title" className="writeInput" autoFocus={true} onChange={e=>setTitle(e.target.value)}/>
+            </div>
+            <div className="writeFormGroup">
+                <input type="text" placeholder="Categories" className="writeInput writeCategories" onChange={e=>setCategories(e.target.value)}/>
             </div>
             <div className="writeFormGroup">
                 <textarea placeholder="Tell your story..." type="text" className="writeInput writeText" onChange={e=>setDesc(e.target.value)}
