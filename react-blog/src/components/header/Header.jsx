@@ -7,7 +7,7 @@ export default function Header() {
       <div className="headerOverlay"/>
         <video src={videoBG} autoPlay loop muted/>
         <div className="headerTitles">
-          <span className="headerTitleSm">to my BLOG</span>
+          <span className="headerTitleSm">This is my BLOG</span>
           <span className="headerTitleLg">Welcome</span>
         </div>
         {/* <img className="headerImg" src="https://images.pexels.com/photos/2775196/pexels-photo-2775196.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="" /> */}
