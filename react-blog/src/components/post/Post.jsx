@@ -4,6 +4,11 @@ import {Link, useLocation} from "react-router-dom"
 export default function Post({post}) {
   const PF = "https://oro-blog-production.up.railway.app/images/"
 
+  const getText = (html) =>{
+    const doc = new DOMParser().parseFromString(html, "text/html")
+    return doc.body.textContent
+  }
+
   return (
     <div className="post">
       {post.photo && (
@@ -23,7 +28,7 @@ export default function Post({post}) {
             <span className="postDate">{new Date (post.createdAt).toDateString()}</span>
         </div>
         <p className="postDesc">
-            {post.desc}
+            {getText(post.desc)}
         </p>
     </div>
   )

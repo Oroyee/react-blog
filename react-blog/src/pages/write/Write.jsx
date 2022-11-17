@@ -1,4 +1,6 @@
 import { useState } from "react"
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css";
 import "./write.css"
 import axios from "axios"
 import { useContext } from "react"
@@ -11,6 +13,8 @@ export default function Write() {
     const [file, setFile] = useState(null);
     const [categories, setCategories] = useState("");
     const {user}= useContext(Context);
+
+    
 
     const handleSubmit = async(e) =>{
         e.preventDefault();
@@ -69,10 +73,16 @@ export default function Write() {
             <div className="writeFormGroup">
                 <input type="text" placeholder="Categories" className="writeInput writeCategories" onChange={e=>setCategories(e.target.value)}/>
             </div>
-            <div className="writeFormGroup">
+            <ReactQuill
+                className="editor"
+                theme="snow"
+                value={desc}
+                onChange={setDesc}
+            />
+            {/* <div className="writeFormGroup">
                 <textarea placeholder="Tell your story..." type="text" className="writeInput writeText" onChange={e=>setDesc(e.target.value)}
                 ></textarea>
-            </div>
+            </div> */}
             <button className="writeSubmit" type="Submit">Publish</button>
         </form>
     </div>

@@ -5,6 +5,9 @@ import { useEffect } from "react";
 import { Link, useLocation } from "react-router-dom"
 import { Context } from "../../context/Context";
 import "./singlePost.css"
+import DOMPurify from "dompurify";
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css";
 
 export default function SinglePost() {
   const location = useLocation();
@@ -43,7 +46,7 @@ export default function SinglePost() {
       title,
       desc,
     });
-      // window.location.reload();
+      window.location.reload();
       setUpdateMode(false);
     } catch (error) {}
   };
@@ -73,7 +76,7 @@ export default function SinglePost() {
           }
           <div className="singlePostInfo">
             <span className="singlePostAuthor">
-              Author: 
+              Author:  
               <Link to={`/?user=${post.username}`} className="link">
                 <b>{post.username}</b>
               </Link>
@@ -81,13 +84,27 @@ export default function SinglePost() {
             <span className="singlePostDate">{new Date(post.createdAt).toDateString()}</span>
           </div>
           {updateMode ? (
-            <textarea className="singlePostDescInput" value={desc} onChange={(e)=>setDesc(e.target.value)}/>
+            // <textarea className="singlePostDescInput" value={desc} onChange={(e)=>setDesc(e.target.value)}/>
+            <ReactQuill
+                className="editor"
+                theme="snow"
+                value={desc}
+                // onChange={setDesc}
+                onChange={setDesc}
+            />
           ):(
-            <p className="singlePostDesc">{desc}</p>
+            // <p className="singlePostDesc">{desc}</p>
+            <p className="singlePostDesc"
+          dangerouslySetInnerHTML={{
+            __html: DOMPurify.sanitize(post.desc),
+          }}
+        ></p> 
           )}
+        </div>
+        <div>
           {updateMode && 
-            <button className="singlePostButton" onClick={handleUpdate}>Update</button>
-          }
+              <button className="singlePostButton" onClick={handleUpdate}>Update</button>
+            }
         </div>
     </div>
   )

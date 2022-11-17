@@ -20,6 +20,10 @@
     align-items: center;
 }
 
+.editor{
+    height: 600px;
+}
+
 .writeIcon{
     width: 25px;
     height: 25px;
