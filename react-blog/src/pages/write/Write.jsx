@@ -5,6 +5,7 @@ import "./write.css"
 import axios from "axios"
 import { useContext } from "react"
 import { Context } from "../../context/Context"
+import EditorToolbar, { modules, formats } from "../../components/editorToolbar/EditorToolbar";
 
 
 export default function Write() {
@@ -73,12 +74,18 @@ export default function Write() {
             <div className="writeFormGroup">
                 <input type="text" placeholder="Categories" className="writeInput writeCategories" onChange={e=>setCategories(e.target.value)}/>
             </div>
-            <ReactQuill
+            <div className="text-editor">
+                <EditorToolbar />
+                <ReactQuill
                 className="editor"
                 theme="snow"
                 value={desc}
                 onChange={setDesc}
+                placeholder={"Write something awesome..."}
+                modules={ modules }
+                formats={formats}
             />
+            </div>
             {/* <div className="writeFormGroup">
                 <textarea placeholder="Tell your story..." type="text" className="writeInput writeText" onChange={e=>setDesc(e.target.value)}
                 ></textarea>

@@ -8,6 +8,7 @@ import "./singlePost.css"
 import DOMPurify from "dompurify";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
+import EditorToolbar, { modules, formats } from "../editorToolbar/EditorToolbar";
 
 export default function SinglePost() {
   const location = useLocation();
@@ -85,13 +86,28 @@ export default function SinglePost() {
           </div>
           {updateMode ? (
             // <textarea className="singlePostDescInput" value={desc} onChange={(e)=>setDesc(e.target.value)}/>
-            <ReactQuill
+            // <ReactQuill
+            //     className="editor"
+            //     theme="snow"
+            //     value={desc}
+            //     // onChange={setDesc}
+            //     onChange={setDesc}
+            // />
+
+            <div className="text-editor">
+                <EditorToolbar />
+                <ReactQuill
                 className="editor"
                 theme="snow"
                 value={desc}
-                // onChange={setDesc}
                 onChange={setDesc}
-            />
+                placeholder={"Write something awesome..."}
+                modules={ modules }
+                formats={formats}
+              />
+            </div>
+            
+            
           ):(
             // <p className="singlePostDesc">{desc}</p>
             <p className="singlePostDesc"
