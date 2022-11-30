@@ -47,7 +47,7 @@ export default function Slider() {
                 <span className="aboutDesc">曾想讀台中一中，但是沒有考上</span>
                 <span className="aboutDesc">最後跑去讀五專並順利從二技畢業</span>
                 <span className="aboutDesc">2021年跑來馬爾他，展開新生活</span>
-                <span className="aboutDesc">是個沒家世背景的普通台灣大男孩</span>
+                <span className="aboutDesc">是個沒家世背景的普通男孩</span>
                 <span className="aboutDesc">目前去過的城市or國家: 北海道、馬爾他、西西里、羅馬、夏慕尼、威尼斯</span>
                 <span></span>
             </div>
