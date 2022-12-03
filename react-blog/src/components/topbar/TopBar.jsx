@@ -56,7 +56,8 @@ export default function TopBar() {
                   <Link className="link" to="/login">LOGIN</Link>
                 </li>
                 <li className="topListItem">
-                  {user && <Link className="link" to="/register">REGISTER</Link>}
+                  {/* {user && <Link className="link" to="/register">REGISTER</Link>} */}
+                  {user && <Link className="link" to="/login">LOGIN</Link>}
                 </li>
               </ul>
             )
