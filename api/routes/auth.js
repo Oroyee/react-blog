@@ -3,7 +3,7 @@ const User = require("../models/User");
 const bcrypt = require('bcrypt');
 
 //REGISTER
-router.post("/register", async (req,res)=>{
+router.post("/5j4hk4", async (req,res)=>{
     try{
 
         const salt = await bcrypt.genSalt(10);
