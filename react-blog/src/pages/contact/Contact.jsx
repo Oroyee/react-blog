@@ -63,10 +63,10 @@ export default function Contact() {
   
       setFormSubmitted({title: 'Sending message...', paragraph: ''});
       emailjs.send(
-        process.env.EMAIL_JS_SERVICE,
-        process.env.EMAIL_JS_TEMPLATE,
+        process.env.REACT_APP_EMAIL_JS_SERVICE,
+        process.env.REACT_APP_EMAIL_JS_TEMPLATE,
         params,
-        process.env.EMAIL_JS_USER,
+        process.env.REACT_APP_EMAIL_JS_USER,
       )
       .then(async ({ status }) => {
         if (status === 200) {
@@ -135,7 +135,7 @@ export default function Contact() {
         <div className='contact-form-item'>
           <ReCAPTCHA
           ref={refCaptcha}
-          sitekey={process.env.RECAPTCHA_SITE_KEY}
+          sitekey={process.env.REACT_APP_RECAPTCHA_SITE_KEY}
           onChange={resetCaptcha}
           />
         </div>
