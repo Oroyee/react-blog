@@ -66,3 +66,32 @@ video{
     color: white;
     margin-left: -8vw;
 }
+
+.contact-form-item{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.contact-form-title{
+    margin: 5px;
+    padding: 5px;
+    width: 80%;
+    font-family: 'Varela', sans-serif;
+    font-size: 24px;
+    color: #222;
+    font-weight: 600;
+    line-height: 20px;
+    text-align: center;
+}
+
+.contact-send{
+    margin: 10px;
+    color: white;
+    background-color: teal;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 16px;  
+}
