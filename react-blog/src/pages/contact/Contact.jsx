@@ -1,21 +1,152 @@
-import React from 'react'
+import React, {useRef, useReducer} from 'react'
 import './contact.css'
 import videoBG from '../../assets/videoBg.mp4'
+import emailjs from 'emailjs-com';
+import ReCAPTCHA from 'react-google-recaptcha'
+import { useState } from 'react';
+
+const initialState = {
+  name: '',
+  email: '',
+  message: '',
+};
+
+function reducer(state, action) {
+  switch (action.type) {
+    case 'name':
+      return { ...state, name: action.value };
+    case 'email':
+      return { ...state, email: action.value };
+    case 'message':
+      return { ...state, message: action.value };
+    default:
+      throw new Error();
+  }
+}
+
+function timeout(delay) {
+  return new Promise( res => setTimeout(res, delay) );
+}
 
 export default function Contact() {
-  return (
+  const [formState, dispatch] = useReducer(reducer, initialState);
+  const [showFormErr, setShouwFormErr] = useState(false);
+  const [formSubmitted, setFormSubmitted] = useState({title: '', paragraph: ''});
+  const [showCaptcha, setShowCaptcha] = useState(false);
+  const {name, email, message} = formState;
+  const refCaptcha = useRef(); // <- add the useRef hook
+
+  let captcha;
+  
+  const submitFormAndShowCaptcha = (e) => {
+    e.preventDefault();
+    setShowCaptcha(true);
+  };
+
+  const resetCaptcha = () => {
+    // maybe set it till after is submitted
+    captcha.reset();
+  }
+
+  const sendEmail=(e) => {
+    e.preventDefault();
+    const token = refCaptcha.current.getValue();
+    if (name ==='' || email ===''|| message==='') {
+      setShouwFormErr(true);
+      return;
+    }
+
+      const params ={
+        ...formState,
+        'g-recaptcha-response': token,
+      };
+  
+      setFormSubmitted({title: 'Sending message...', paragraph: ''});
+      emailjs.send(
+        process.env.EMAIL_JS_SERVICE,
+        process.env.EMAIL_JS_TEMPLATE,
+        params,
+        process.env.EMAIL_JS_USER,
+      )
+      .then(async ({ status }) => {
+        if (status === 200) {
+          setFormSubmitted({ title: 'Message has been sent', paragraph: 'Jeff(Oro) will be in contact with you soon.' });
+          await timeout(3000);
+          window.location.reload();
+        } else {
+          setFormSubmitted({ title: 'Unexpected status code returned from EmailJS, try again later', paragraph: 'Please contact Mike either by phone or email.' });
+        }
+        }, (err) => {
+          console.log(err);
+          setFormSubmitted({ title: 'Error sending message, try again later', paragraph: 'Please contact Mike either by phone or email.' });
+      });
+  };
+    
+
+
+  return(
     <div className='main'>
-      <div className="overlay"></div>
-      <video src={videoBG} autoPlay loop muted></video>
+    <div className="overlay"></div>
+    <video src={videoBG} autoPlay loop muted></video>
+    { formSubmitted.title === '' ? (
+      
       <div className='content'>
-        {/* <div className="photo">
-          123
-        </div> */}
-        <div className="desc">
-        <h1 className='title'>jeff.zhan.company@gmail.com</h1>
-        {/* <p>To my site</p> */}
+     
+        <form className='contact-form' onSubmit={sendEmail}>
+          <div className='contact-form-item'>
+            <span className="contact-form-title">Name</span>
+            <input
+                id="contact-form-name"
+                className="contact-form-item-name"
+                type="text"
+                value={name}
+                onChange={(e) => dispatch({ type: 'name', value: e.target.value })}
+                required
+              />
+          </div>
+          <div className='contact-form-item'>
+            <span className="contact-form-title">Email</span>
+            <input
+                id="contact-form-email"
+                className="contact-form-item-email"
+                type="email"
+                value={email}
+                onChange={(e) => dispatch({ type: 'email', value: e.target.value })}
+                required
+              />
+          </div>
+          <div className='contact-form-item'>
+            <span className="contact-form-title">Message</span>
+            <textarea
+                rows="10"
+                cols="50"
+                id="contact-form-message"
+                className="contact-form-item-message"
+                type="text"
+                value={message}
+                onChange={(e) => dispatch({ type: 'message', value: e.target.value })}
+                required
+              />
+          </div>
+          <div className='contact-form-item'>
+            <button className="contact-send" type="submit">Send</button>
+          </div>
+        </form>
+        <div className='contact-form-item'>
+          <ReCAPTCHA
+          ref={refCaptcha}
+          sitekey={process.env.RECAPTCHA_SITE_KEY}
+          onChange={resetCaptcha}
+          />
         </div>
-      </div>
     </div>
+      ) : (
+      <div className="content">
+        <h3 className="contact-form-title">{formSubmitted.title}</h3>
+        <p className="contact-form-title">{formSubmitted.paragraph}</p>
+      </div>
   )
+      }
+    </div>
+  );
 }
