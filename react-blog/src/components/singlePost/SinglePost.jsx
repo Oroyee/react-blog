@@ -19,10 +19,11 @@ export default function SinglePost() {
   const [title, setTitle] = useState("");
   const [desc, setDesc] = useState("");
   const [updateMode, setUpdateMode] = useState(false);
+  const baseURL = process.env.REACT_APP_BACKEND_URL + '/api/posts/';
 
   useEffect(()=>{
     const getPost = async () => {
-      const res = await axios.get("https://oro-blog-production.up.railway.app/api/posts/"+ path);
+      const res = await axios.get(baseURL + path);
       setPost(res.data);
       setTitle(res.data.title);
       setDesc(res.data.desc);
@@ -33,7 +34,7 @@ export default function SinglePost() {
 
   const handleDelete = async() => {
     try {
-      await axios.delete(`https://oro-blog-production.up.railway.app/api/posts/${post._id}`, {
+      await axios.delete(baseURL + post._id, {
         data:{username:user.username},
     });
       window.location.replace("/");
@@ -42,7 +43,7 @@ export default function SinglePost() {
 
   const handleUpdate = async() => {
     try {
-      await axios.put(`https://oro-blog-production.up.railway.app/api/posts/${post._id}`, {
+      await axios.put(baseURL + post._id, {
       username:user.username,
       title,
       desc,

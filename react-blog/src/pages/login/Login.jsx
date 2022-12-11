@@ -9,12 +9,13 @@ export default function Login() {
   const userRef = useRef();
   const passwordRef = useRef();
   const { dispatch, isFetching } = useContext(Context)
+  const baseURL = process.env.REACT_APP_BACKEND_URL + '/api/auth/login';
 
   const handleSubmit = async (e) =>{
     e.preventDefault();
     dispatch({type:"LOGIN_START"});
     try{
-      const res = await axios.post("https://oro-blog-production.up.railway.app/api/auth/login",{
+      const res = await axios.post(baseURL,{
         username: userRef.current.value,
         password: passwordRef.current.value,
       });
