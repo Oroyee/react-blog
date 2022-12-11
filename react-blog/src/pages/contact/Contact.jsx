@@ -74,11 +74,11 @@ export default function Contact() {
           await timeout(3000);
           window.location.reload();
         } else {
-          setFormSubmitted({ title: 'Unexpected status code returned from EmailJS, try again later', paragraph: 'Please contact Mike either by phone or email.' });
+          setFormSubmitted({ title: 'Unexpected status code returned from EmailJS, try again later', paragraph: 'Please contact Jeff(Oro) either by phone or email.' });
         }
         }, (err) => {
           console.log(err);
-          setFormSubmitted({ title: 'Error sending message, try again later', paragraph: 'Please contact Mike either by phone or email.' });
+          setFormSubmitted({ title: 'Error sending message, try again later', paragraph: 'Please contact Jeff(Oro) either by phone or email.' });
       });
   };
     
