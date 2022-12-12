@@ -9,10 +9,11 @@ import { useLocation } from "react-router-dom";
 export default function Home() {
   const [posts,setPosts] = useState([]);
   const {search} = useLocation();
+  const baseURL = process.env.REACT_APP_BACKEND_URL + "/api/posts"+ search
 
  useEffect(()=>{
   const fetchPosts = async ()=>{
-    const res = await axios.get("https://oro-blog-production.up.railway.app/api/posts"+search);
+    const res = await axios.get(baseURL);
     setPosts(res.data);
   }
   fetchPosts();

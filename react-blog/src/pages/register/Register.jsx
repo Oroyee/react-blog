@@ -8,12 +8,12 @@ export default function Register() {
   const [email,setEmail] = useState("")
   const [password,setPassword] = useState("")
   const [error,setError] = useState(false)
-
+  const baseURL = process.env.REACT_APP_BACKEND_URL + "/api/auth/5j4hk4"
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError(false);
     try{
-      const res = await axios.post("https://oro-blog-production.up.railway.app/api/auth/5j4hk4", {
+      const res = await axios.post(baseURL, {
         username,
         email,
         password

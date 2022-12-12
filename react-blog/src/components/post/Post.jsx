@@ -2,8 +2,6 @@ import "./post.css"
 import {Link, useLocation} from "react-router-dom"
 
 export default function Post({post}) {
-  const PF = "https://oro-blog-production.up.railway.app/images/"
-
   const getText = (html) =>{
     const doc = new DOMParser().parseFromString(html, "text/html")
     return doc.body.textContent
@@ -12,7 +10,6 @@ export default function Post({post}) {
   return (
     <div className="post">
       {post.photo && (
-        // <img className="postImg" src={PF + post.photo} alt="" />)}
         <img className="postImg" src={post.photo} alt="" />)}
         <div className="postInfo">
             <div className="postCats">{

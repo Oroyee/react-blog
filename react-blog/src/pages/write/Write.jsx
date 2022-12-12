@@ -14,7 +14,8 @@ export default function Write() {
     const [file, setFile] = useState(null);
     const [categories, setCategories] = useState("");
     const {user}= useContext(Context);
-
+    const upload = process.env.REACT_APP_BACKEND_URL + "/api/upload"
+    const baseURL = process.env.REACT_APP_BACKEND_URL + "/api/posts"
     
 
     const handleSubmit = async(e) =>{
@@ -47,11 +48,11 @@ export default function Write() {
             }
             try{
                 // await axios.post("/upload", data);
-                await axios.post("https://oro-blog-production.up.railway.app/api/upload",data);
+                await axios.post(upload,data);
             }catch(err){}
         }
         try {
-            const res = await axios.post("https://oro-blog-production.up.railway.app/api/posts",newPost);
+            const res = await axios.post(baseURL,newPost);
             // const res = await axios.post("/posts",newPost);
             // await new Promise(resolve => setTimeout(resolve, 10000));
             window.location.replace("/post/"+res.data._id);

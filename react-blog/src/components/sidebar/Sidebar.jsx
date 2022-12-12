@@ -5,11 +5,11 @@ import { Link } from "react-router-dom";
 
 export default function Sidebar() {
     const [cats,setCats] = useState([]);
-
+    const baseURL = process.env.REACT_APP_BACKEND_URL + "/api/categories";
     useEffect(()=>{
         const getCats = async ()=>
             {
-                const res = await axios.get("https://oro-blog-production.up.railway.app/api/categories");
+                const res = await axios.get(baseURL);
                 setCats(res.data);
             };
         getCats();

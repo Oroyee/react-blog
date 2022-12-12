@@ -11,9 +11,9 @@ export default function Settings() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [success, setSuccess] = useState(false);
-
     const {user, dispatch} = useContext(Context);
-    const PF = "https://oro-blog-production.up.railway.app/images/";
+    const upload = process.env.REACT_APP_BACKEND_URL + "/api/upload"
+    const baseURL = process.env.REACT_APP_BACKEND_URL + "/api/users/"
 
     const handleSubmit = async(e) =>{
         e.preventDefault();
@@ -45,11 +45,11 @@ export default function Settings() {
             }
             try{
                 // await axios.post("/upload", data);
-                await axios.post("https://oro-blog-production.up.railway.app/api/upload",data);
+                await axios.post(upload,data);
             }catch(err){}
         }
         try {
-            const res = await axios.put("https://oro-blog-production.up.railway.app/api/users/" +user._id, updatedUser);
+            const res = await axios.put(baseURL +user._id, updatedUser);
             setSuccess(true);
             dispatch({type:"UPDATE_SUCCESS", payload:res.data});
         } catch (error) {
@@ -59,7 +59,7 @@ export default function Settings() {
 
     const handleDelete = async() => {
         try {
-          await axios.delete(`https://oro-blog-production.up.railway.app/api/users/${user._id}`, {
+          await axios.delete(baseURL + user._id, {
             data:{username:user.username},
         });
           window.location.replace("/");

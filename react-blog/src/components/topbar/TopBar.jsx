@@ -5,8 +5,6 @@ import "./topbar.css"
 
 export default function TopBar() {
   const { user, dispatch } = useContext(Context);
-  const PF = "https://oro-blog-production.up.railway.app/images/";
-
   const handleLogout = () =>{
     dispatch({type:"LOGOUT"})
   };
