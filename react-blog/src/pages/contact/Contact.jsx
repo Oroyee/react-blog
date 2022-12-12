@@ -96,7 +96,6 @@ export default function Contact() {
           <div className='contact-form-item'>
             <span className="contact-form-title">Name</span>
             <input
-                id="contact-form-name"
                 className="contact-form-item-name"
                 name='from_name'
                 type="text"
@@ -108,7 +107,6 @@ export default function Contact() {
           <div className='contact-form-item'>
             <span className="contact-form-title">Email</span>
             <input
-                id="contact-form-email"
                 className="contact-form-item-email"
                 name="from_email"
                 type="email"
@@ -122,7 +120,6 @@ export default function Contact() {
             <textarea
                 rows="10"
                 cols="50"
-                id="contact-form-message"
                 className="contact-form-item-message"
                 name="message"
                 type="text"
