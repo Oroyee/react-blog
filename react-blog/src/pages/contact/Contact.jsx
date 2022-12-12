@@ -98,6 +98,7 @@ export default function Contact() {
             <input
                 id="contact-form-name"
                 className="contact-form-item-name"
+                name='from_name'
                 type="text"
                 value={name}
                 onChange={(e) => dispatch({ type: 'name', value: e.target.value })}
@@ -109,6 +110,7 @@ export default function Contact() {
             <input
                 id="contact-form-email"
                 className="contact-form-item-email"
+                name="from_email"
                 type="email"
                 value={email}
                 onChange={(e) => dispatch({ type: 'email', value: e.target.value })}
@@ -122,6 +124,7 @@ export default function Contact() {
                 cols="50"
                 id="contact-form-message"
                 className="contact-form-item-message"
+                name="message"
                 type="text"
                 value={message}
                 onChange={(e) => dispatch({ type: 'message', value: e.target.value })}
