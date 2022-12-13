@@ -1,6 +1,10 @@
 import React from "react";
 import { Quill } from "react-quill";
+import ImageResize from 'quill-image-resize-module-react';
 
+
+//image resize part is according to pinglu85's sandbox demo
+Quill.register('modules/imageResize', ImageResize);
 
 //This code just copied from Mike, this is his website: https://medium.com/@mircea.calugaru/react-quill-editor-with-full-toolbar-options-and-custom-buttons-undo-redo-176d79f8d375
 
@@ -66,6 +70,10 @@ export const modules = {
     delay: 500,
     maxStack: 100,
     userOnly: true
+  },
+  imageResize: {
+    parchment: Quill.import('parchment'),
+    modules: ['Resize', 'DisplaySize']
   }
 };
 
