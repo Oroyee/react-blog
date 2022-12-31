@@ -1,25 +1,39 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { Context } from "../../context/Context";
 import "./topbar.css"
 
 export default function TopBar() {
-  const user = false;
+  const { user, dispatch } = useContext(Context);
+  const handleLogout = () =>{
+    dispatch({type:"LOGOUT"})
+  };
   return (
     <div className='top'>
+      {/* from font awesome */}
         <div className="topLeft">
-        <i className="topIcon fa-brands fa-square-twitter"></i>
-        <i className="topIcon fa-brands fa-square-pinterest"></i>
-        <i className="topIcon fa-brands fa-square-facebook"></i>
-        <i className="topIcon fa-brands fa-square-instagram"></i>
+          <a target="_blank" href="https://www.youtube.com/channel/UCfvTULySWBBbZ3sH-5SvOMg">
+            <i className="topIcon fa-brands fa-square-youtube"></i>
+          </a>
+          <a target="_blank" href="https://www.linkedin.com/in/jie-fu-jeff-zhan-5202b0215/">
+            <i class="topIcon fa-brands fa-linkedin"></i>
+          </a>
+          <a target="_blank" href="https://www.facebook.com/profile.php?id=100001015279689">
+            <i className="topIcon fa-brands fa-square-facebook"></i>
+          </a>
+          <a target="_blank" href="https://www.instagram.com/oroyeee/">
+            <i className="topIcon fa-brands fa-square-instagram"></i>
+          </a>
         </div>
         <div className="topCenter">
           <ul className="topList">
             <li className="topListItem">
               <Link className="link" to="/">HOME</Link>
             </li>
-            <li className="topListItem"><Link className="link" to="/">ABOUT</Link></li>
-            <li className="topListItem"><Link className="link" to="/">CONTACT</Link></li>
-            <li className="topListItem"><Link className="link" to="/write">WRITE</Link></li>
-            <li className="topListItem">
+            <li className="topListItem"><Link className="link" to="/about">ABOUT</Link></li>
+            <li className="topListItem"><Link className="link" to="/contact">CONTACT</Link></li>
+            <li className="topListItem"><Link className="link" to="/write">{user && "WRITE"}</Link></li>
+            <li className="topListItem" onClick={handleLogout}>
               {user && "LOGOUT"}
             </li>
           </ul>
@@ -27,14 +41,20 @@ export default function TopBar() {
         <div className="topRight">
           {
             user ? (
-              <img className="topImg" src="https://images.pexels.com/photos/13221178/pexels-photo-13221178.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="" />
-            ) : (
+              <Link to="/settings">
+                <img 
+                className="topImg"
+                src={user.profilePic}
+                alt="" 
+                />
+              </Link>
+              ) : (
               <ul className="topList">
                 <li className="topListItem">
                   <Link className="link" to="/login">LOGIN</Link>
                 </li>
                 <li className="topListItem">
-                  <Link className="link" to="/register">REGISTER</Link>
+                  {user && <Link className="link" to="/register">REGISTER</Link>}
                 </li>
               </ul>
             )

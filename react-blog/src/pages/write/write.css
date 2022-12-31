@@ -20,6 +20,10 @@
     align-items: center;
 }
 
+.editor{
+    height: 600px;
+}
+
 .writeIcon{
     width: 25px;
     height: 25px;
@@ -38,6 +42,10 @@
     border: none;
     padding: 20px;
     width: 70vw;
+}
+
+.writeCategories{
+    font-size: 20px;
 }
 
 .writeInput:focus{

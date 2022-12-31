@@ -1,0 +1,97 @@
+/* *{
+    margin: 0;
+    padding: 0;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+
+} */
+
+.main{
+    width: 100%;
+    height: 100vh;
+}
+
+video{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.content{
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+.overlay{
+    position: absolute;
+    top: 1;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0,.6);
+}
+
+/* .photo{
+    position: absolute;
+    background-color: rgba(12, 16, 43, 0.8);
+    border-radius: 30px;
+    width: 50vw;
+    height: 80vh;
+    margin-left:-50vw;
+} */
+
+.desc{
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: 30px;
+    width: 80vw;
+    height: 80vh;
+    /* margin-left:50vw; */
+}
+
+.title{
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    margin-left: -8vw;
+}
+
+.contact-form-item{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.contact-form-title{
+    margin: 5px;
+    padding: 5px;
+    width: 80%;
+    font-family: 'Varela', sans-serif;
+    font-size: 18px;
+    color: white;
+    font-weight: 600;
+    line-height: 20px;
+    text-align: center;
+}
+
+.contact-send{
+    margin: 10px;
+    color: white;
+    background-color: teal;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 16px;  
+}

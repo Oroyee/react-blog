@@ -1,20 +1,31 @@
 import "./post.css"
+import {Link, useLocation} from "react-router-dom"
 
-export default function Post() {
+export default function Post({post}) {
+  const getText = (html) =>{
+    const doc = new DOMParser().parseFromString(html, "text/html")
+    return doc.body.textContent
+  }
+
   return (
     <div className="post">
-        <img className="postImg" src="https://images.pexels.com/photos/2662116/pexels-photo-2662116.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="" />
+      {post.photo && (
+        <img className="postImg" src={post.photo} alt="" />)}
         <div className="postInfo">
-            <div className="postCats">
-                <span className="postCat">Music</span>
-                <span className="postCat">Life</span>
+            <div className="postCats">{
+              post.categories.map(c=>(
+                <span className="postCat">{c.name}</span>
+              ))
+            }  
             </div>
-            <span className="postTitle">Lorem ipsum dolor sit</span>
+            <Link to={`/post/${post._id}`} className="link">
+              <span className="postTitle">{post.title}</span>
+            </Link>
             <hr />
-            <span className="postDate">1 hour ago</span>
+            <span className="postDate">{new Date (post.createdAt).toDateString()}</span>
         </div>
         <p className="postDesc">
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Veritatis, fugit non. Fugiat sint quae repellendus voluptatibus temporibus et at? Maxime labore ipsum dicta dignissimos voluptatibus, omnis commodi et maiores debitis.
+            {getText(post.desc)}
         </p>
     </div>
   )
