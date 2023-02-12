@@ -2,8 +2,8 @@ import React from "react";
 import { Quill } from "react-quill";
 import ImageResize from 'quill-image-resize-module-react';
 import ImageUploader from "quill-image-uploader";
-const imageURL = process.env.REACT_IMAGE_URL
-const uploadPreset =  process.env.REACT_UPLOAD_PRESET
+const imageURL = process.env.REACT_APP_IMAGE_URL
+const uploadPreset =  process.env.REACT_APP_UPLOAD_PRESET
 
 //image resize part is according to pinglu85's sandbox demo
 Quill.register('modules/imageResize', ImageResize);
@@ -83,10 +83,10 @@ export const modules = {
       return new Promise((resolve, reject) => {
         const formData = new FormData();
         formData.append("file", file);
-        formData.append("upload_preset", uploadPreset )
+        formData.append("upload_preset", 'article_img' )
 
         fetch(
-          imageURL,
+          'https://api.cloudinary.com/v1_1/do44hvboo/image/upload',
           {
             method: "POST",
             body: formData

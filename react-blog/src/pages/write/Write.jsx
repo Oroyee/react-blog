@@ -16,8 +16,8 @@ export default function Write() {
     const {user}= useContext(Context);
     const upload = process.env.REACT_APP_BACKEND_URL + "/api/upload"
     const baseURL = process.env.REACT_APP_BACKEND_URL + "/api/posts"
-    const imageURL = process.env.REACT_IMAGE_URL
-    const uploadPreset =  process.env.REACT_UPLOAD_PRESET
+    const imageURL = process.env.REACT_APP_IMAGE_URL
+    const uploadPreset =  process.env.REACT_APP_UPLOAD_PRESET
     
 
     const handleSubmit = async(e) =>{
