@@ -1,10 +1,13 @@
 import React from "react";
 import { Quill } from "react-quill";
 import ImageResize from 'quill-image-resize-module-react';
-
+import ImageUploader from "quill-image-uploader";
+const imageURL = process.env.REACT_IMAGE_URL
+const uploadPreset =  process.env.UPLOAD_PRESET
 
 //image resize part is according to pinglu85's sandbox demo
 Quill.register('modules/imageResize', ImageResize);
+Quill.register("modules/imageUploader", ImageUploader);
 
 //This code just copied from Mike, this is his website: https://medium.com/@mircea.calugaru/react-quill-editor-with-full-toolbar-options-and-custom-buttons-undo-redo-176d79f8d375
 
@@ -74,6 +77,32 @@ export const modules = {
   imageResize: {
     parchment: Quill.import('parchment'),
     modules: ['Resize', 'DisplaySize']
+  },
+  imageUploader: {
+    upload: file => {
+      return new Promise((resolve, reject) => {
+        const formData = new FormData();
+        formData.append("file", file);
+        formData.append("upload_preset", uploadPreset )
+
+        fetch(
+          imageURL,
+          {
+            method: "POST",
+            body: formData
+          }
+        )
+          .then(response => response.json())
+          .then(result => {
+            console.log(result.url);
+            resolve(result.url);
+          })
+          .catch(error => {
+            reject("Upload failed");
+            console.error("Error:", error);
+          });
+      });
+    }
   }
 };
 
