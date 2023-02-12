@@ -3,7 +3,7 @@ import { Quill } from "react-quill";
 import ImageResize from 'quill-image-resize-module-react';
 import ImageUploader from "quill-image-uploader";
 const imageURL = process.env.REACT_IMAGE_URL
-const uploadPreset =  process.env.UPLOAD_PRESET
+const uploadPreset =  process.env.REACT_UPLOAD_PRESET
 
 //image resize part is according to pinglu85's sandbox demo
 Quill.register('modules/imageResize', ImageResize);
