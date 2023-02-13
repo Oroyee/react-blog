@@ -16,6 +16,8 @@ export default function Write() {
     const {user}= useContext(Context);
     const upload = process.env.REACT_APP_BACKEND_URL + "/api/upload"
     const baseURL = process.env.REACT_APP_BACKEND_URL + "/api/posts"
+    const imageURL = process.env.REACT_APP_IMAGE_URL
+    const uploadPreset =  process.env.REACT_APP_UPLOAD_PRESET
     
 
     const handleSubmit = async(e) =>{
@@ -26,30 +28,46 @@ export default function Write() {
             desc,
             categories,
         };
+        let imageUrl = "";
 
         if(file){
-            // const data =  new FormData();
-            // const filename = Date.now() + file.name;
-            // data.append("name", filename);
-            // data.append("file", file);
-            // newPost.photo = filename;
+            const data =  new FormData();
+            const filename = Date.now() + file.name;
+            data.append("file", file);
+            data.append("upload_preset", uploadPreset);
+            newPost.photo = filename;
+            const config = {
+                headers: { "X-Requested-With": "XMLHttpRequest" },
+              };
+            const dataRes = await axios.post(
+              imageURL,
+              data,
+              config  
+            );
+            imageUrl = dataRes.data.url;
+            newPost.photo = imageUrl;
             // try{
             //     // await axios.post("https://oroblog.herokuapp.com/api/upload",data);
-            //     await axios.post("/upload",data);
+            //     // await axios.post("/upload",data);
+            //     await axios.post("/upload",submitPost);
             // }catch(err){}
-            const data =  new FormData();
-            var reader = new FileReader();
-            reader.readAsDataURL(file);
-            reader.onload = function(e){
-                var imgcode = e.target.result;
-                console.log(imgcode);
-                newPost.photo = imgcode;
-                data.append("file",imgcode);
-            }
-            try{
-                // await axios.post("/upload", data);
-                await axios.post(upload,data);
-            }catch(err){}
+            // const data =  new FormData();
+            // var reader = new FileReader();
+            // reader.readAsDataURL(file);
+            // reader.onload = function(e){
+            //     var imgcode = e.target.result;
+            //     console.log(imgcode);
+            //     newPost.photo = imgcode;
+            //     data.append("file",imgcode);
+            // }
+            // const submitPost = {
+            //     image: imageUrl,
+            // };
+            // try{
+            //     // await axios.post("/upload", data);
+            //     // await axios.post(upload,data);
+            //     await axios.post(upload,submitPost);
+            // }catch(err){}
         }
         try {
             const res = await axios.post(baseURL,newPost);

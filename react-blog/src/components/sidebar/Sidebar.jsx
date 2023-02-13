@@ -40,7 +40,7 @@ export default function Sidebar() {
                 <a target="_blank" href="https://www.youtube.com/channel/UCfvTULySWBBbZ3sH-5SvOMg">
                     <i className="sidebarIcon fa-brands fa-square-youtube"></i>
                 </a>
-                <a target="_blank" href="https://www.linkedin.com/in/jeff-zhan-5202b0215/">
+                <a target="_blank" href="https://www.linkedin.com/in/jie-fu-jeff-zhan-5202b0215/">
                     <i className="sidebarIcon fa-brands fa-linkedin"></i>
                 </a>
                 <a target="_blank" href="https://www.facebook.com/profile.php?id=100001015279689">
