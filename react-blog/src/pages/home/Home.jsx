@@ -11,22 +11,14 @@ export default function Home() {
   const [posts,setPosts] = useState([]);
   const {search} = useLocation();
   const baseURL = process.env.REACT_APP_BACKEND_URL + "/api/posts"+ search
-  const [currentPosts, setCurrentPosts] = useState(null);
-  const [pageCount, setPageCount] = useState(0);
-  const [postsOffset, setPostsOffset] = useState(0);
-
 
  useEffect(()=>{
   const fetchPosts = async ()=>{
     const res = await axios.get(baseURL);
     setPosts(res.data);
   }
-  const endOffset = postsOffset + 8;
-    setCurrentPosts(posts.slice(postsOffset, endOffset));
-    setPageCount(Math.ceil(posts.length / 8));
   fetchPosts();
- },[search, posts, postsOffset])
-// },[search])
+},[search])
   return (
     <>
       <Header/>

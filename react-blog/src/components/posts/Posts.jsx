@@ -7,24 +7,29 @@ export default function Posts({ posts} ) {
   const [currentPosts, setCurrentPosts] = useState(null);
   const [pageCount, setPageCount] = useState(0);
   const [postsOffset, setPostsOffset] = useState(0);
-  const [endOffset, setEndOffset] = useState(8);
+  const [endOffset, setEndOffset] = useState(posts.length);
+  const [firstLoad, setFirstLoad] = useState(true)
   const handlePageClick = (event) => {
-    // const newOffset = (event.selected * 8) % posts.length;
     if (posts.length - ((event.selected+1) * 8) < 0 )
     {
       const newOffset = 0;
       setEndOffset(8 + (posts.length - ((event.selected+1) * 8)));
       setPostsOffset(newOffset);
+      setFirstLoad(false);
     }else{
       const newOffset = posts.length - ((event.selected+1) * 8) ;
       setEndOffset(newOffset+8);
       setPostsOffset(newOffset);
+      setFirstLoad(false);
     }
   };
 
   useEffect(() => {
-    // setCurrentPosts(posts.slice(postsOffset, endOffset));
-    // setPostsOffset((posts.length) - 4);
+    if (firstLoad == true){
+      const newOffset = posts.length - (1 * 8) ;
+      setEndOffset(newOffset+8);
+      setPostsOffset(newOffset);
+    }
     setPageCount(Math.ceil(posts.length / 8));
   }, [posts, postsOffset]);
 
