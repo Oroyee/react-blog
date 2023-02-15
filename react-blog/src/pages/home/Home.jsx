@@ -6,18 +6,27 @@ import { useEffect, useState } from "react";
 import axios from "axios"
 import { useLocation } from "react-router-dom";
 
+
 export default function Home() {
   const [posts,setPosts] = useState([]);
   const {search} = useLocation();
   const baseURL = process.env.REACT_APP_BACKEND_URL + "/api/posts"+ search
+  const [currentPosts, setCurrentPosts] = useState(null);
+  const [pageCount, setPageCount] = useState(0);
+  const [postsOffset, setPostsOffset] = useState(0);
+
 
  useEffect(()=>{
   const fetchPosts = async ()=>{
     const res = await axios.get(baseURL);
     setPosts(res.data);
   }
+  const endOffset = postsOffset + 8;
+    setCurrentPosts(posts.slice(postsOffset, endOffset));
+    setPageCount(Math.ceil(posts.length / 8));
   fetchPosts();
- },[search])
+ },[search, posts, postsOffset])
+// },[search])
   return (
     <>
       <Header/>
