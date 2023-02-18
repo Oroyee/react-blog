@@ -4,3 +4,36 @@
     flex-wrap: wrap;
     margin: 20px;
 }
+
+.pagination{
+    display: flex;
+    justify-content: center;
+    align-items: center;}
+
+.pagination > li {
+    list-style: none;
+    border: 0.3px solid;
+  }
+  .pagination > li > a,
+  .pagination > li > span {
+    float: left;
+    padding: 8px 20px;
+    line-height: 1.5;
+    border: 1px solid #ddd;
+    margin-left: -1px;
+  }
+  
+  .pagination > li.active > a {
+    color: #fff;
+    background-color: #24231f;
+    border-color: #ececec;
+  }
+  .pagination > li > a:hover {
+    background-color: #e77e7e;
+    color: white;
+    cursor: pointer;
+  }
+  .pagination > li:first-child > a,
+  .pagination > li:first-child > span {
+    margin-left: 0;
+  }

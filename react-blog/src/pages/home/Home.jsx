@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import axios from "axios"
 import { useLocation } from "react-router-dom";
 
+
 export default function Home() {
   const [posts,setPosts] = useState([]);
   const {search} = useLocation();
@@ -17,7 +18,7 @@ export default function Home() {
     setPosts(res.data);
   }
   fetchPosts();
- },[search])
+},[search])
   return (
     <>
       <Header/>
