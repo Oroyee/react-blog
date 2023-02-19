@@ -87,7 +87,7 @@ export default function Contact() {
   return(
     <div className='main'>
     <div className="overlay"></div>
-    <video src={videoBG} autoPlay loop muted></video>
+    <video className="video" src={videoBG} autoPlay loop muted></video>
     { formSubmitted.title === '' ? (
       
       <div className='content'>
