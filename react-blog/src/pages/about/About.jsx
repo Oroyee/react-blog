@@ -17,7 +17,7 @@ export default function About() {
     <div className='main'>
       
       <div className="overlay"></div>
-      <video className="video" src={videoBG} autoPlay loop muted></video>
+      <video className="video" src={videoBG} autoPlay playsInline loop muted></video>
       <div className='content'>
         <div className="desc">
           <Slider/>
