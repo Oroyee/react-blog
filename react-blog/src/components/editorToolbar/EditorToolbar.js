@@ -83,10 +83,10 @@ export const modules = {
       return new Promise((resolve, reject) => {
         const formData = new FormData();
         formData.append("file", file);
-        formData.append("upload_preset", 'article_img' )
+        formData.append("upload_preset", uploadPreset )
 
         fetch(
-          'https://api.cloudinary.com/v1_1/do44hvboo/image/upload',
+          imageURL,
           {
             method: "POST",
             body: formData
@@ -94,8 +94,8 @@ export const modules = {
         )
           .then(response => response.json())
           .then(result => {
-            console.log(result.url);
-            resolve(result.url);
+            console.log(result.secure_url);
+            resolve(result.secure_url);
           })
           .catch(error => {
             reject("Upload failed");
