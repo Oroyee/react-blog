@@ -91,7 +91,7 @@ export default function Write() {
                 </label>
                 <input type="file" id="fileInput" style={{display:"none"}} onChange={e=>setFile(e.target.files[0])} />
                 <input type="text" placeholder="Title" className="writeInput" autoFocus={true} onChange={e=>setTitle(e.target.value)}/>
-                {/* <input type="text" placeholder="Id" className="writeInput writeId" autoFocus={true} onChange={e=>setId(e.target.value)}/> */}
+                <input type="text" placeholder="Id" className="writeInput writeId" autoFocus={true} onChange={e=>setId(e.target.value)}/>
             </div>
             <div className="writeFormGroup">
                 <input type="text" placeholder="Categories" className="writeInput writeCategories" onChange={e=>setCategories(e.target.value)}/>
