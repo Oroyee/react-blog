@@ -104,4 +104,8 @@
     .overlay{
         display: none;
     }
+
+    .contact-form-title{
+        color: rgb(8, 8, 8);
+    }
 }
