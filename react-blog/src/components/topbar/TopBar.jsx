@@ -81,7 +81,7 @@ export default function TopBar() {
         <div className="topProfile">
           <div className="topProfileItem">
               <span className="topProfileTitle">ABOUT ME</span>
-              <img src=" https://res.cloudinary.com/do44hvboo/image/upload/v1676721771/upload/v5z4oxqwy1m0cjhynq9e.jpg" alt="Oro and the sunshine in Tigne beach" />
+              <img src=" https://res.cloudinary.com/do44hvboo/image/upload/v1676721771/upload/oro.jpg" alt="Oro and the sunshine in Tigne beach" />
               
               <p>Oro, a boy from Taiwan who has been working and liveing in Malta for 2 years. Currently working at Chiliz as a QA Test Engineer. <br></br><br></br>
               偶肉，一名來自台灣的男孩，已經在馬爾他生活及工作兩年，目前在Chiliz-一間區塊鍊相關公司，擔任QA Test Engineer
