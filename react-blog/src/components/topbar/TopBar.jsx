@@ -2,12 +2,25 @@ import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../../context/Context";
 import "./topbar.css"
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 export default function TopBar() {
   const { user, dispatch } = useContext(Context);
   const handleLogout = () =>{
     dispatch({type:"LOGOUT"})
   };
+
+  const [cats,setCats] = useState([]);
+    const baseURL = process.env.REACT_APP_BACKEND_URL + "/api/categories";
+    useEffect(()=>{
+        const getCats = async ()=>
+            {
+                const res = await axios.get(baseURL);
+                setCats(res.data);
+            };
+        getCats();
+    },[]);
   return (
     <div className='top'>
       {/* from font awesome */}
@@ -25,6 +38,10 @@ export default function TopBar() {
             <i className="topIcon fa-brands fa-square-instagram"></i>
           </a>
         </div>
+        <input type="checkbox" id="checkbox_toggle" />
+        <label for="checkbox_toggle" className="hamburger">&#9776;</label>
+        <input type="checkbox" id="topProfile_toggle" />
+        <label for="topProfile_toggle" className="infoIcon">&#9432;</label>
         <div className="topCenter">
           <ul className="topList">
             <li className="topListItem">
@@ -59,8 +76,29 @@ export default function TopBar() {
               </ul>
             )
           }
-          
           <i className="topSearchIcon fa-solid fa-magnifying-glass"></i>
+        </div>
+        <div className="topProfile">
+          <div className="topProfileItem">
+              <span className="topProfileTitle">ABOUT ME</span>
+              <img src=" https://res.cloudinary.com/do44hvboo/image/upload/v1676721771/upload/oro.jpg" alt="Oro and the sunshine in Tigne beach" />
+              
+              <p>Oro, a boy from Taiwan who has been working and liveing in Malta for 2 years. Currently working at Chiliz as a QA Test Engineer. <br></br><br></br>
+              偶肉，一名來自台灣的男孩，已經在馬爾他生活及工作兩年，目前在Chiliz-一間區塊鍊相關公司，擔任QA Test Engineer
+              </p>
+              
+              
+          </div>
+          <div className="topProfileItem">
+              <span className="topProfileTitle">CATEGORIES</span>
+              <ul className="topProfileList">
+                  {cats.map((c) => (
+                      <Link to={`/?cat=${c.name}`} className="link">
+                          <li className="topProfileListItem">{c.name}</li>
+                      </Link>
+                  ))}
+              </ul>
+          </div>
         </div>
     </div>
   )

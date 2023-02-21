@@ -9,6 +9,7 @@ import EditorToolbar, { modules, formats } from "../../components/editorToolbar/
 
 
 export default function Write() {
+    const [id, setId] = useState("");
     const [title, setTitle] = useState("");
     const [desc, setDesc] = useState("");
     const [file, setFile] = useState(null);
@@ -23,6 +24,7 @@ export default function Write() {
     const handleSubmit = async(e) =>{
         e.preventDefault();
         const newPost = {
+            _id:id,
             username:user.username,
             title,
             desc,
@@ -35,16 +37,16 @@ export default function Write() {
             const filename = Date.now() + file.name;
             data.append("file", file);
             data.append("upload_preset", uploadPreset);
-            newPost.photo = filename;
+            // newPost.photo = filename;
             const config = {
-                headers: { "X-Requested-With": "XMLHttpRequest" },
+                // headers: { "X-Requested-With": "XMLHttpRequest" },
               };
             const dataRes = await axios.post(
               imageURL,
               data,
               config  
             );
-            imageUrl = dataRes.data.url;
+            imageUrl = dataRes.data.secure_url;
             newPost.photo = imageUrl;
             // try{
             //     // await axios.post("https://oroblog.herokuapp.com/api/upload",data);
@@ -89,6 +91,7 @@ export default function Write() {
                 </label>
                 <input type="file" id="fileInput" style={{display:"none"}} onChange={e=>setFile(e.target.files[0])} />
                 <input type="text" placeholder="Title" className="writeInput" autoFocus={true} onChange={e=>setTitle(e.target.value)}/>
+                <input type="text" placeholder="Id" className="writeInput writeId" autoFocus={true} onChange={e=>setId(e.target.value)}/>
             </div>
             <div className="writeFormGroup">
                 <input type="text" placeholder="Categories" className="writeInput writeCategories" onChange={e=>setCategories(e.target.value)}/>

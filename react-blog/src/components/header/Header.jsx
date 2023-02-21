@@ -1,11 +1,12 @@
 import "./header.css"
 import videoBG from '../../assets/blogBg.mp4'
+import React, {useState} from 'react';
 
 export default function Header() {
   return (
     <div className='header'>
       <div className="headerOverlay"/>
-        <video src={videoBG} autoPlay loop muted/>
+        <video src={videoBG} autoPlay playsInline loop muted/>
         <div className="headerTitles">
           <span className="headerTitleSm">This is my BLOG</span>
           <span className="headerTitleLg">Welcome</span>
