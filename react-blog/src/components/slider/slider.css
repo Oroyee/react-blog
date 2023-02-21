@@ -54,7 +54,7 @@
       text-transform: uppercase;
       width: 90%;
       text-align: center;
-      font-size: 3.5rem;
+      font-size: 2.5rem;
     }
     
     .aboutDesc {
@@ -62,6 +62,6 @@
       padding: 0;
       width: 80%;
       text-align: center;
-      font-size: 1.2rem;
+      font-size: 1.0rem;
     }
   }
