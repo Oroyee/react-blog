@@ -52,18 +52,15 @@ export default function TopBar() {
         <label for="topProfile_toggle" className="infoIcon">&#9432;</label>
         <div className="topCenter">
           <ul className="topList">
-            <li className="topListItem">
-            <button className="menuButton" onClick={closeTopList} type="button"><Link className="link" to="/">HOME</Link></button>
+            <li className="topListItem" onClick={closeTopList}>
+              <Link className="link" to="/">HOME</Link>
             </li>
-            <li className="topListItem"><button className="menuButton" onClick={closeTopList} type="button"><Link className="link" to="/about">ABOUT</Link></button></li>
-            <li className="topListItem"><button className="menuButton" onClick={closeTopList} type="button"><Link className="link" to="/contact">CONTACT</Link></button></li>
-            {/* <button onClick={closeTopList} type="button"><li><label for="checkbox_toggle" className="topListItem">CLOSE</label></li></button> */}
-            {/* <button onClick={closeTopList} type="button"><li><label for="checkbox_toggle" className="topListItem">CLOSE</label></li></button> */}
-            <li className="topListItem"><button className="menuButton" onClick={closeTopList} type="button">CLOSE</button></li>
-
-            <li className="topListItem" onClick={handleLogout}>
-              {user && "LOGOUT"}
-            </li>
+            <li className="topListItem" onClick={closeTopList}><Link className="link" to="/about">ABOUT</Link></li>
+            <li className="topListItem" onClick={closeTopList}><Link className="link" to="/contact">CONTACT</Link></li>
+            <li className="topListItem-close" onClick={closeTopList}>CLOSE</li>
+              <li className="topListItem" onClick={handleLogout}>
+                {user && "LOGOUT"}
+              </li>
           </ul>
         </div>
         <div className="topRight">
@@ -78,9 +75,9 @@ export default function TopBar() {
               </Link>
               ) : (
               <ul className="topList">
-                <li className="topListItem">
-                  <Link className="link" to="/login">LOGIN</Link>
-                </li>
+                  <li className="topListItem">
+                    <Link className="link" to="/login">LOGIN</Link>
+                  </li>
                 <li className="topListItem">
                   {user && <Link className="link" to="/register">REGISTER</Link>}
                 </li>

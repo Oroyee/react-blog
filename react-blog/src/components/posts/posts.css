@@ -3,6 +3,7 @@
     display: flex;
     flex-wrap: wrap;
     margin: 20px;
+    
 }
 
 .pagination{
@@ -45,7 +46,6 @@
       margin: 20px;
       justify-content: center;
       align-items: center;
-      /* flex: 9; */
     }
 }
 
@@ -56,6 +56,5 @@
     margin: 1px;
     justify-content: center;
     align-items: center;
-    /* flex: 9; */
   }
 }

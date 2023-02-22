@@ -1,7 +1,13 @@
 .post{
     width: 385px;
     margin: 0px 25px 40px 25px;
+    animation: fadeIn 5s;
 }
+
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
 
 .postImg{
     width: 100%;
