@@ -11,6 +11,14 @@ export default function TopBar() {
     dispatch({type:"LOGOUT"})
   };
 
+  function closeTopList(){
+    document.getElementById("checkbox_toggle").checked = false;
+  };
+
+  function closeTopProfile(){
+    document.getElementById("topProfile_toggle").checked = false;
+  };
+
   const [cats,setCats] = useState([]);
     const baseURL = process.env.REACT_APP_BACKEND_URL + "/api/categories";
     useEffect(()=>{
@@ -45,11 +53,14 @@ export default function TopBar() {
         <div className="topCenter">
           <ul className="topList">
             <li className="topListItem">
-              <Link className="link" to="/">HOME</Link>
+            <button className="menuButton" onClick={closeTopList} type="button"><Link className="link" to="/">HOME</Link></button>
             </li>
-            <li className="topListItem"><Link className="link" to="/about">ABOUT</Link></li>
-            <li className="topListItem"><Link className="link" to="/contact">CONTACT</Link></li>
-            <li className="topListItem"><Link className="link" to="/write">{user && "WRITE"}</Link></li>
+            <li className="topListItem"><button className="menuButton" onClick={closeTopList} type="button"><Link className="link" to="/about">ABOUT</Link></button></li>
+            <li className="topListItem"><button className="menuButton" onClick={closeTopList} type="button"><Link className="link" to="/contact">CONTACT</Link></button></li>
+            {/* <button onClick={closeTopList} type="button"><li><label for="checkbox_toggle" className="topListItem">CLOSE</label></li></button> */}
+            {/* <button onClick={closeTopList} type="button"><li><label for="checkbox_toggle" className="topListItem">CLOSE</label></li></button> */}
+            <li className="topListItem"><button className="menuButton" onClick={closeTopList} type="button">CLOSE</button></li>
+
             <li className="topListItem" onClick={handleLogout}>
               {user && "LOGOUT"}
             </li>
@@ -93,12 +104,15 @@ export default function TopBar() {
               <span className="topProfileTitle">CATEGORIES</span>
               <ul className="topProfileList">
                   {cats.map((c) => (
+                    <button className="catButton" onClick={closeTopProfile} type="button">
                       <Link to={`/?cat=${c.name}`} className="link">
                           <li className="topProfileListItem">{c.name}</li>
                       </Link>
+                    </button>
                   ))}
               </ul>
           </div>
+          <button className="menuButton" onClick={closeTopProfile} type="button">CLOSE</button>
         </div>
     </div>
   )
