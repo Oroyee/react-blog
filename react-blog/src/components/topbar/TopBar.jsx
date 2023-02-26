@@ -57,6 +57,7 @@ export default function TopBar() {
             </li>
             <li className="topListItem" onClick={closeTopList}><Link className="link" to="/about">ABOUT</Link></li>
             <li className="topListItem" onClick={closeTopList}><Link className="link" to="/contact">CONTACT</Link></li>
+            <li className="topListItem" onClick={closeTopList}><Link className="link" to="/write">{user && "WRITE"}</Link></li>
             <li className="topListItem-close" onClick={closeTopList}>CLOSE</li>
               <li className="topListItem" onClick={handleLogout}>
                 {user && "LOGOUT"}
