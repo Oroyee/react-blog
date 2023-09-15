@@ -48,7 +48,7 @@ export default function Slider() {
                 <span className="aboutDesc">最後跑去讀五專並順利從二技畢業</span>
                 <span className="aboutDesc">2021年跑來馬爾他，展開新生活</span>
                 <span className="aboutDesc">是個沒家世背景的普通人</span>
-                <span className="aboutDesc">目前去過的地區: 北海道、馬爾他、西西里、羅馬、夏慕尼、威尼斯、英國(里茲、倫敦)、比薩、佛羅倫斯、巴黎、維也納、馬德里、佛羅倫斯</span>
+                <span className="aboutDesc">目前去過的地區: 北海道、馬爾他、西西里、羅馬、夏慕尼、威尼斯、英國(里茲、倫敦)、比薩、佛羅倫斯、巴黎、維也納、馬德里、法蘭克福</span>
                 <span></span>
             </div>
         </Overlay>
