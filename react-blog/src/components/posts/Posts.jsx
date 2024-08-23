@@ -30,19 +30,14 @@ export default function Posts({ posts} ) {
       setEndOffset(newOffset+8);
       setPostsOffset(newOffset);
     }
-    if (posts.length - ((event.selected+1) * 8) < 0 )
-    {
+    setPageCount(Math.ceil(posts.length / 8));
+
+    if(pageCount == 1){
       const newOffset = 0;
       setEndOffset(8 + (posts.length - ((event.selected+1) * 8)));
       setPostsOffset(newOffset);
       setFirstLoad(false);
-    }else{
-      const newOffset = posts.length - ((event.selected+1) * 8) ;
-      setEndOffset(newOffset+8);
-      setPostsOffset(newOffset);
-      setFirstLoad(false);
     }
-    setPageCount(Math.ceil(posts.length / 8));
   }, [posts, postsOffset]);
 
   return (
