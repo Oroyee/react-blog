@@ -43,11 +43,10 @@ export default function Slider() {
     >
         <Overlay>
             <div className="Wrapper">
-                <span className="aboutTitle">來自台中的男孩</span>
+                <span className="aboutTitle">來自台中</span>
                 <span className="aboutDesc">曾想讀台中一中，但是沒有考上</span>
                 <span className="aboutDesc">最後跑去讀五專並順利從二技畢業</span>
                 <span className="aboutDesc">2021年跑來馬爾他，展開新生活</span>
-                <span className="aboutDesc">是個沒家世背景的普通人</span>
                 <span className="aboutDesc">目前去過的地區: 北海道、馬爾他、西西里、羅馬、夏慕尼、威尼斯、英國(里茲、倫敦)、比薩、佛羅倫斯、巴黎、維也納、馬德里、瑞典(斯德哥爾摩)、法蘭克福</span>
                 <span></span>
             </div>
