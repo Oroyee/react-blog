@@ -32,9 +32,9 @@ export default function Posts({ posts} ) {
     }
     setPageCount(Math.ceil(posts.length / 8));
 
-    if(pageCount == 1){
-      const newOffset = 0;
-      setEndOffset(8 + (posts.length - (pageCount * 8)));
+    if(pageCount){
+      const newOffset = posts.length - (pageCount * 8);
+      setEndOffset(8 + newOffset);
       setPostsOffset(newOffset);
       setFirstLoad(false);
     }
