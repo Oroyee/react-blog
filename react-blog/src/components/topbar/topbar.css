@@ -130,7 +130,7 @@ input[type=checkbox]{
     margin-left: 20vw;
     margin-right: 20vw;
     text-align: left;
-    height: 300px;
+    height: 100px;
     overflow: auto;
 }
 
