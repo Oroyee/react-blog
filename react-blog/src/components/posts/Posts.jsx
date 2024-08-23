@@ -34,7 +34,7 @@ export default function Posts({ posts} ) {
 
     if(pageCount == 1){
       const newOffset = 0;
-      setEndOffset(8 + (posts.length - ((event.selected+1) * 8)));
+      setEndOffset(8 + (posts.length - (pageCount * 8)));
       setPostsOffset(newOffset);
       setFirstLoad(false);
     }
