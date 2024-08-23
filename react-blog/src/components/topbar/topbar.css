@@ -90,8 +90,8 @@ input[type=checkbox]{
 .topProfile{
     transition: opacity 500ms, display 500ms;
     position: absolute;
-    height: 0vh;
-    width: 0vw;
+    height: 100vh;
+    width: 100vw;
     visibility: hidden;
     opacity: 0;
 }
@@ -104,6 +104,7 @@ input[type=checkbox]{
 
 .topProfileTitle{
     margin: 3px;
+    margin-top: 5px;
     padding: 5px;
     width: 60%;
     border-top: 1px solid #a7a4a4;
@@ -117,8 +118,8 @@ input[type=checkbox]{
 }
 
 .topProfileItem > img{
-    width: 40%;
-    height: 40%;
+    width: auto;
+    height: 20vh;
     margin-top: 15px;
 }
 
@@ -138,13 +139,17 @@ input[type=checkbox]{
     list-style: none;
     margin-bottom: 10px;
     margin-right: 45px;
+    height: 10vh;
+    overflow: auto;
 }
 
 .topProfileListItem{
     display: inline-block;
     width: 50%;
-    margin-top: 15px;
+    margin-top: 14px;
     cursor: pointer;
+    font-family: 'Varela Round', sans-serif;
+    font-size: 14px;
 }
 
 .topListItem-close{
