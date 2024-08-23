@@ -90,10 +90,10 @@ export default function TopBar() {
         <div className="topProfile">
           <div className="topProfileItem">
               <span className="topProfileTitle">ABOUT ME</span>
-              <img src=" https://res.cloudinary.com/do44hvboo/image/upload/v1676721771/upload/oro.jpg" alt="Oro and the sunshine in Tigne beach" />
+              <img src="https://res.cloudinary.com/do44hvboo/image/upload/v1724443303/Oro-2024.jpg" alt="Oro in Malta 2024" />
               
               <p>Oro, a boy from Taiwan who has been working and liveing in Malta for 2 years. Currently working at Chiliz as a QA Test Engineer. <br></br><br></br>
-              偶肉，一名來自台灣的男孩，已經在馬爾他生活及工作兩年，目前在Chiliz-一間區塊鍊相關公司，擔任QA Test Engineer
+              Oro，西班牙語為黃金之意，也是一隻會YeeYee叫恐龍的名字，偶肉則是前同事取的諧音。現任職總部位於馬爾他的區塊鏈公司-Chiliz 擔任自動化軟體測試工程師。倒數第二屆基測生因沒考上台中一中鬼轉五專菁英班，曾任職國家中山科學研究院。台灣疫情爆發期間，離開台中反向深入重災區歐洲尋找機會，是個總是自找麻煩卻樂此不疲的在馬爾他台灣人。興趣是收集故事，相信文字能夠改變人生。
               </p>
               
               
