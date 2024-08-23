@@ -51,9 +51,10 @@ export default function Posts({ posts} ) {
               breakLabel="..."
               nextLabel="Next >"
               onPageChange={handlePageClick}
-              pageRangeDisplayed={5}
+              pageRangeDisplayed={2}
+              marginPagesDisplayed={3}
               pageCount={pageCount}
-              previousLabel="< Previous"
+              previousLabel="< Prev"
               renderOnZeroPageCount={null}
               breakClassName={"page-item"}
               breakLinkClassName={"page-link"}
