@@ -10,7 +10,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: auto;
+    margin-top: 2vh;
+    margin-left: auto;
+    margin-right: auto;
   }
 
 .pagination > li {
@@ -58,5 +60,7 @@
     margin: 1px;
     justify-content: center;
     align-items: center;
+    height: auto;
+    width: auto;
   }
 }
