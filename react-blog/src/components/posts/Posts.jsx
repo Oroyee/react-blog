@@ -4,39 +4,43 @@ import ReactPaginate from "react-paginate";
 import { useEffect, useState } from "react";
 
 export default function Posts({ posts} ) {
-  const [currentPosts, setCurrentPosts] = useState(null);
+  const [currentPage, setCurrentPage] = useState(0);
   const [pageCount, setPageCount] = useState(0);
   const [postsOffset, setPostsOffset] = useState(0);
   const [endOffset, setEndOffset] = useState(posts.length);
   const [firstLoad, setFirstLoad] = useState(true)
   const handlePageClick = (event) => {
-    if (posts.length - ((event.selected+1) * 8) < 0 )
+  
+    if (posts.length > 8)
     {
-      const newOffset = 0;
-      setEndOffset(8 + (posts.length - ((event.selected+1) * 8)));
-      setPostsOffset(newOffset);
-      setFirstLoad(false);
-    }else{
       const newOffset = posts.length - ((event.selected+1) * 8) ;
       setEndOffset(newOffset+8);
       setPostsOffset(newOffset);
       setFirstLoad(false);
+      setCurrentPage((event.selected+1));
     }
   };
 
   useEffect(() => {
-    if (firstLoad == true){
+    setPageCount(Math.ceil(posts.length / 8));
+
+    if (firstLoad == true && pageCount!= 1){
       const newOffset = posts.length - (1 * 8) ;
       setEndOffset(newOffset+8);
       setPostsOffset(newOffset);
     }
-    setPageCount(Math.ceil(posts.length / 8));
-
-    if(pageCount == 1){
+    else if(pageCount == 1){
       const newOffset = 0;
-      setEndOffset(8 + (posts.length - (pageCount * 8)));
+      setEndOffset(posts.length);
       setPostsOffset(newOffset);
-      setFirstLoad(false);
+      setFirstLoad(true)
+    }
+    else if(firstLoad == false){
+      if (posts.length - (8*currentPage) < 0){
+        const newOffset = 0;
+        setEndOffset(8+ posts.length - (8*currentPage))
+        setPostsOffset(newOffset);
+      }
     }
   }, [posts, postsOffset]);
 
