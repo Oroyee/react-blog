@@ -85,10 +85,10 @@ router.get("/", async (req,res)=>{
                     $in: [catName],
                 },
             // },undefined, {skip, limit: 4});
-                }).skip(skip).limit(limit).sort({date : -1});
+                }).skip(skip).limit(limit);
         } else{
             // posts = await Post.find({},undefined, {skip, limit: 4});
-            posts = await Post.find().skip(skip).limit(limit).sort({date : -1});
+            posts = await Post.find().skip(skip).limit(limit);
         }
         res.status(200).json(posts);
     }catch(err){
