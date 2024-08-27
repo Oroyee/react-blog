@@ -72,6 +72,8 @@ router.get("/:id", async (req,res)=>{
 router.get("/", async (req,res)=>{
     const username = req.query.user;
     const catName = req.query.cat;
+    const limit = parseInt(req.query.limit) || 8; 
+    const skip = parseInt(req.query.skip) || 0;
     // const skip = res.query.skip && /^\d+$/.test(req.query.skip) ? Number(req.query.skip) : 0
     try{
         let posts;
@@ -83,10 +85,10 @@ router.get("/", async (req,res)=>{
                     $in: [catName],
                 },
             // },undefined, {skip, limit: 4});
-                });
+                }).skip(skip).limit(limit);
         } else{
             // posts = await Post.find({},undefined, {skip, limit: 4});
-            posts = await Post.find();
+            posts = await Post.find().skip(skip).limit(limit);
         }
         res.status(200).json(posts);
     }catch(err){
