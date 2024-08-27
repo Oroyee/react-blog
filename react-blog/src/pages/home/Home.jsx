@@ -17,16 +17,18 @@ export default function Home() {
   const baseURL = process.env.REACT_APP_BACKEND_URL + "/api/posts"+ search
 
   const handleScroll = () => {
-    if(window.innerHeight + document.documentElement.scrollTop +10 >= document.documentElement.scrollHeight){
+    if(window.innerHeight + document.documentElement.scrollTop +1 >= document.documentElement.scrollHeight){
+    //   const {offestHeight, scrollTop,scrollHeight} = e.target;
+    // if(offestHeight + scrollTop === scrollHeight){
       setLoading(true);
-      setSkip(posts.length)
+      setSkip(prevSkip => prevSkip + limit);
     }
   };
 
 useEffect(() => {
   window.addEventListener("scroll", handleScroll);
   return () => window.removeEventListener("scroll",handleScroll);
-}, {});
+}, []);
 
  useEffect(()=>{
   const fetchPosts = async ()=>{
@@ -38,10 +40,24 @@ useEffect(() => {
     setPosts((prev) => {
       return [...prev, ...res.data];
     });
+    // setPosts(prevPosts => [...prevPosts, res.data])
     setLoading(false);
   }
   fetchPosts();
-},[search, limit, skip])
+},[limit, skip])
+
+useEffect(()=>{
+  const fetchPosts = async ()=>{
+    // const res = await axios.get(baseURL);
+    const res = await axios.get(baseURL, {
+      params: {limit, skip}
+    });
+    setPosts(res.data);
+    setLoading(false);
+    setSkip(0);
+  }
+  fetchPosts();
+},[search])
   return (
     <>
       <Header/>
