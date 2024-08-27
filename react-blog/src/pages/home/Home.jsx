@@ -16,35 +16,66 @@ export default function Home() {
   // const baseURL = process.env.REACT_APP_BACKEND_URL + "/api/posts" + search + `?skip={skip}`
   const baseURL = process.env.REACT_APP_BACKEND_URL + "/api/posts"+ search
 
-  const handleScroll = () => {
-    if(window.innerHeight + document.documentElement.scrollTop +30 >= document.documentElement.scrollHeight){
-    //   const {offestHeight, scrollTop,scrollHeight} = e.target;
-    // if(offestHeight + scrollTop === scrollHeight){
-      setLoading(true);
-      setSkip(prevSkip => prevSkip + limit);
-    }
-  };
+  
 
-useEffect(() => {
-  window.addEventListener("scroll", handleScroll);
-  return () => window.removeEventListener("scroll",handleScroll);
-}, []);
+// useEffect(() => {
+//   window.addEventListener("scroll", handleScroll);
+//   return () => window.removeEventListener("scroll",handleScroll);
+// }, []);
+
+function debounce(func, delay) {
+  let timeoutId;
+  return function (...args) {
+    if (timeoutId) {
+      clearTimeout(timeoutId);
+    }
+    timeoutId = setTimeout(() => {
+      func(...args);
+    }, delay);
+  };
+}
+
+const handleScroll = () => {
+  if(window.innerHeight + document.documentElement.scrollTop +1 >= document.documentElement.scrollHeight){
+  //   const {offestHeight, scrollTop,scrollHeight} = e.target;
+  // if(offestHeight + scrollTop === scrollHeight){
+    setLoading(true);
+    
+  }
+};
+window.addEventListener("scroll", debounce(handleScroll, 500));
+
+const fetchPosts = async ()=>{
+  const res = await axios.get(baseURL, {
+    params: {limit, skip}
+  });
+  // setPosts(res.data);
+  setPosts((prev) => {
+    return [...prev, ...res.data];
+  });
+  // setPosts(prevPosts => [...prevPosts, res.data])
+  setLoading(false);
+}
 
  useEffect(()=>{
-  const fetchPosts = async ()=>{
-    // const res = await axios.get(baseURL);
-    const res = await axios.get(baseURL, {
-      params: {limit, skip}
-    });
-    // setPosts(res.data);
-    setPosts((prev) => {
-      return [...prev, ...res.data];
-    });
-    // setPosts(prevPosts => [...prevPosts, res.data])
-    setLoading(false);
-  }
   fetchPosts();
-},[limit, skip])
+
+  // setTimeout(async() => {
+  //   const res = await axios.get(baseURL, {
+  //     params: {limit, skip}
+  //   });
+
+  //   setPosts((prev) => {
+  //     return [...prev, ...res.data];
+  //   });
+  // }, 1500);
+},[skip]);
+
+useEffect(() => {
+  if (loading == true) {
+    setSkip(prevSkip => prevSkip + limit);
+  }
+}, [loading]);
 
 useEffect(()=>{
   const fetchPosts = async ()=>{
