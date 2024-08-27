@@ -20,9 +20,7 @@ export default function ScrollTop() {
     return (
         <>
           <div className={showGoTop ? 'goTop' : 'goTopHidden'} onClick={ handleScrollUp}>
-            <button className='goTopButton'>
-                <span>^</span>
-            </button>
+            <i class="goTopButton fa-solid fa-circle-chevron-up fa-2xl"></i>
           </div>  
         </>
       )
