@@ -9,7 +9,7 @@ import { useLocation } from "react-router-dom";
 
 export default function Home() {
   const [posts,setPosts] = useState([]);
-  const [limit, setLimit] = useState(8);
+  const [limit, setLimit] = useState(2);
   const [skip, setSkip] = useState(0);
   const [loading, setLoading] = useState(false);
   const {search} = useLocation();
@@ -17,7 +17,7 @@ export default function Home() {
   const baseURL = process.env.REACT_APP_BACKEND_URL + "/api/posts"+ search
 
   const handleScroll = () => {
-    if(window.innerHeight + document.documentElement.scrollTop +1 >= document.documentElement.scrollHeight){
+    if(window.innerHeight + document.documentElement.scrollTop +30 >= document.documentElement.scrollHeight){
     //   const {offestHeight, scrollTop,scrollHeight} = e.target;
     // if(offestHeight + scrollTop === scrollHeight){
       setLoading(true);
