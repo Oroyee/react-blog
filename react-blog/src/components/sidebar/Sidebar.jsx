@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import "./sidebar.css"
 import { Link } from "react-router-dom";
+import ScrollTop from "../scrollTop/ScrollTop"
 
 export default function Sidebar() {
     const [cats,setCats] = useState([]);

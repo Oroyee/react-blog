@@ -5,6 +5,7 @@ import Sidebar from "../../components/sidebar/Sidebar"
 import { useEffect, useState } from "react";
 import axios from "axios"
 import { useLocation } from "react-router-dom";
+import ScrollTop from "../../components/scrollTop/ScrollTop"
 
 
 export default function Home() {
@@ -84,6 +85,7 @@ useEffect(() => {
       <div className="home">
         <Posts posts={posts}/>
         <Sidebar/>
+        <ScrollTop/>
       </div>  
     </>
   )
