@@ -15,15 +15,7 @@ export default function Home() {
   const [loading, setLoading] = useState(false);
   const [firstLoading, setFirstLoading] = useState(true);
   const {search} = useLocation();
-  // const baseURL = process.env.REACT_APP_BACKEND_URL + "/api/posts" + search + `?skip={skip}`
   const baseURL = process.env.REACT_APP_BACKEND_URL + "/api/posts"+ search
-
-  
-
-// useEffect(() => {
-//   window.addEventListener("scroll", handleScroll);
-//   return () => window.removeEventListener("scroll",handleScroll);
-// }, []);
 
 function debounce(func, delay) {
   let timeoutId;
@@ -46,8 +38,6 @@ const handleScroll = () => {
   }
 };
 window.addEventListener("scroll", debounce(handleScroll, 500));
-
-
 
 useEffect(()=>{
   const fetchPosts = async ()=>{
