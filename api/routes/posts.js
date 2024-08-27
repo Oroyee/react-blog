@@ -72,7 +72,7 @@ router.get("/:id", async (req,res)=>{
 router.get("/", async (req,res)=>{
     const username = req.query.user;
     const catName = req.query.cat;
-    // const skip = res.query.skip && /^\d+$/.test(req.query.skip) ? Number(req.query.skip) : 0
+    const skip = res.query.skip && /^\d+$/.test(req.query.skip) ? Number(req.query.skip) : 0
     try{
         let posts;
         if(username){
@@ -82,11 +82,11 @@ router.get("/", async (req,res)=>{
                 categories:{
                     $in: [catName],
                 },
-            // },undefined, {skip, limit: 4});
-                });
+            },undefined, {skip, limit: 4});
+                // });
         } else{
-            // posts = await Post.find({},undefined, {skip, limit: 4});
-            posts = await Post.find();
+            posts = await Post.find({},undefined, {skip, limit: 4});
+            // posts = await Post.find();
         }
         res.status(200).json(posts);
     }catch(err){
