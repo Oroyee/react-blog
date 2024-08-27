@@ -19,7 +19,7 @@ export default function Posts({ posts} ) {
   return (
     <>
       <div className="posts">
-        {posts.slice(0, posts.length).reverse().map((p) => (
+        {posts.slice(0, posts.length).map((p) => (
           <Post post={p} />
         ))}
       </div>  
