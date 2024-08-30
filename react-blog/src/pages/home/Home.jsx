@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import axios from "axios"
 import { useLocation } from "react-router-dom";
 import ScrollTop from "../../components/scrollTop/ScrollTop"
+import Loader from "../../components/loader/Loader";
 
 
 export default function Home() {
@@ -86,6 +87,7 @@ useEffect(() => {
         <Posts posts={posts}/>
         <Sidebar/>
         <ScrollTop/>
+        {loading&&<Loader/>}
       </div>  
     </>
   )
