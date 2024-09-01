@@ -1,7 +1,6 @@
-import React, {useState} from 'react';
-import './about.css'
-import { useLayoutEffect, useRef } from "react";
+import { useLayoutEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import "./style.css";
 
 
@@ -25,12 +24,33 @@ export default function About() {
   //   // return () => ctx.revert();
   // }, []);
   
+  const main = useRef();
+  const scrollTween = useRef();
+  const [ctx] = useState(gsap.context(() => {}, main));
+
+  const goToSection = (i) => {
+    // Remove the GSAP instance with the specific ID
+    // to prevent memory leak
+    ctx.data.forEach((e) => {
+      if (e.vars && e.vars.id === "scrollTween") {
+        e.kill();
+      }
+    });
+    ctx.add(() => {
+      scrollTween.current = gsap.to(window, {
+        scrollTo: { y: i * window.innerHeight, autoKill: false },
+        duration: 1,
+        id: "scrollTween",
+        onComplete: () => (scrollTween.current = null),
+        overwrite: true
+      });
+    });
+  };
   
 
-
-  const sections = gsap.utils.toArray('section');
-  // const main = useRef();
   useLayoutEffect(() => {
+    ctx.add(() => {
+    const sections = gsap.utils.toArray('section');
       let scrollTween = gsap.to(sections, {
         xPercent: -100 * (sections.length - 1),
         ease: 'none',
@@ -139,6 +159,8 @@ export default function About() {
           }
       })
   })
+});
+return () => ctx.revert();
   }, []);
 
   // useLayoutEffect(() => {
@@ -169,7 +191,7 @@ export default function About() {
     //   <section className="section"></section>
     // </div>
     
-    <div>
+    <main ref={main}>
        <div class="logo">
        <h1>台灣<br/>囡仔<br/>Taiwan</h1>
     </div>
@@ -215,6 +237,6 @@ export default function About() {
             </div>
         </section>
     </div>
-    </div>
+    </main>
   );
 }
