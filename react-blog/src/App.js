@@ -16,6 +16,12 @@ import {
 import { useContext } from "react";
 import { Context } from "./context/Context";
 
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { ScrollToPlugin } from "gsap/ScrollToPlugin";
+
+gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
+
 // If you are using react-router-dom v6, it looks like Switch has been replaced with Routes.
 function App() {
   const {user} = useContext(Context);
