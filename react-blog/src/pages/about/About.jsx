@@ -1,7 +1,7 @@
 import { useLayoutEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import "./style.css";
+import "./about.css";
 
 
 export default function About() {
@@ -191,7 +191,7 @@ return () => ctx.revert();
     //   <section className="section"></section>
     // </div>
     
-    <main ref={main}>
+    <main ref={main} className="aboutpage">
        <div class="logo">
        <h1>台灣<br/>囡仔<br/>Taiwan</h1>
     </div>
