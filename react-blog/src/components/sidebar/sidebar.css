@@ -48,11 +48,14 @@
 }
 
 .sidebarListItem{
-    display: inline-block;
+    display:inline-flex;
     width: 50%;
     margin-top: 15px;
     cursor: pointer;
     font-family: 'Varela Round', sans-serif;
+    align-items: center;
+    justify-content: center;
+    
 }
 
 .sidebarSocial{
