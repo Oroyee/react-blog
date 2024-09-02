@@ -250,7 +250,7 @@ return () => ctx.revert();
   }, []);
 
   useLayoutEffect(() => {
-    ctx.add("(min-width: 400px) and (max-width: 820px)",() => {
+    ctx.add("(min-width: 400px) and (max-width: 819px)",() => {
       const sections = gsap.utils.toArray('section');
         let scrollTween = gsap.to(sections, {
           xPercent: -100 * (sections.length - 1),
