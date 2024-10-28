@@ -366,7 +366,7 @@ return () => ctx.revert();
 
         <section class="first page" car = "tesla">
             <div class="block"></div>
-            <img src="" alt=""/><span class="huge-text-web">Katalon</span>
+            <span class="huge-text-web">Katalon</span>
             <div class="caption-web">
             Katalon Platform is an automation testing software tool. It is built on top of the open-source automation frameworks Selenium, Appium with a specialized IDE interface for web, API, mobile and desktop application testing.
             </div>
