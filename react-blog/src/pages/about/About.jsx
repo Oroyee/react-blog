@@ -364,7 +364,7 @@ return () => ctx.revert();
 
         <section class="now character">
             <div class="block"></div>
-            <img src="https://res.cloudinary.com/do44hvboo/image/upload/v1724443303/Oro-2024.jpg" alt=""/><span class="huge-text">臺中</span>
+            <img src="https://res.cloudinary.com/do44hvboo/image/upload/v1742369148/oro-2025-full.jpg" alt=""/><span class="huge-text">臺中</span>
             <div class="caption">
                 本名詹傑富，現實英文名Jeff，在網路上則有另一個名稱Oro並經營Youtube頻道: OroYee 咿!偶肉。現居於歐洲地中海上的小島馬爾他，已邁入第四年。因緣際會之下加入總部位於馬爾他的區塊鏈公司-Chiliz，擔任QA Test Engineer並主要負責自動化測試，每天過著忙碌新奇且充實的日子。
             </div>
