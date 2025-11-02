@@ -1,64 +1,27 @@
 import Post from "../post/Post"
 import "./posts.css"
-import ReactPaginate from "react-paginate";
 import { useEffect, useState } from "react";
 
 export default function Posts({ posts} ) {
-  const [currentPosts, setCurrentPosts] = useState(null);
-  const [pageCount, setPageCount] = useState(0);
+  // const [postsOffset, setPostsOffset] = useState([]);
   const [postsOffset, setPostsOffset] = useState(0);
   const [endOffset, setEndOffset] = useState(posts.length);
-  const [firstLoad, setFirstLoad] = useState(true)
-  const handlePageClick = (event) => {
-    if (posts.length - ((event.selected+1) * 8) < 0 )
-    {
-      const newOffset = 0;
-      setEndOffset(8 + (posts.length - ((event.selected+1) * 8)));
-      setPostsOffset(newOffset);
-      setFirstLoad(false);
-    }else{
-      const newOffset = posts.length - ((event.selected+1) * 8) ;
-      setEndOffset(newOffset+8);
-      setPostsOffset(newOffset);
-      setFirstLoad(false);
-    }
-  };
+  const [page, setPage] = useState(1);
 
   useEffect(() => {
-    if (firstLoad == true){
-      const newOffset = posts.length - (1 * 8) ;
-      setEndOffset(newOffset+8);
-      setPostsOffset(newOffset);
-    }
-    setPageCount(Math.ceil(posts.length / 8));
+    // setPostsOffset(postsOffset +1 );
+    // setPostsOffset((prev) => [...prev, ...endOffset])
+    // setEndOffset(posts.length)
+    // setPostsOffset(Math.ceil(posts.length/8))
   }, [posts, postsOffset]);
+
 
   return (
     <>
       <div className="posts">
-        {posts.slice(postsOffset, endOffset).reverse().map((p) => (
+        {posts.slice(0, posts.length).map((p) => (
           <Post post={p} />
         ))}
-      <div className="pagination">
-        <ReactPaginate
-              breakLabel="..."
-              nextLabel="next >"
-              onPageChange={handlePageClick}
-              pageRangeDisplayed={5}
-              pageCount={pageCount}
-              previousLabel="< previous"
-              renderOnZeroPageCount={null}
-              breakClassName={"page-item"}
-              breakLinkClassName={"page-link"}
-              containerClassName={"pagination"}
-              pageClassName={"page-item"}
-              pageLinkClassName={"page-link"}
-              previousClassName={"page-item"}
-              previousLinkClassName={"page-link"}
-              nextClassName={"page-item"}
-              nextLinkClassName={"page-link"}
-              activeClassName={"active"} /> 
-        </div>
       </div>  
     </>
   )

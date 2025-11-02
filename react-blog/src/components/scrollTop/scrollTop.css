@@ -1,0 +1,30 @@
+.goTopHidden{
+    display: none;
+}
+
+.goTopButton{
+    display: block;
+    position: fixed;
+    bottom: 5%;
+    left: 95%;
+    cursor: pointer;
+    animation: fadeIn 0.6s;
+}
+
+.topListItem:hover{
+    transform: scale(1.1);
+}
+
+@media screen and (max-width: 820px) {
+    .goTopButton{
+        bottom: 10%;
+        left: 93%;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .goTopButton{
+        bottom: 10%;
+        left: 90%;
+    }
+}

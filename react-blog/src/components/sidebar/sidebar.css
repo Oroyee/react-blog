@@ -43,14 +43,19 @@
 .sidebarList{
     list-style: none;
     margin-bottom: 20px;
-    margin-right: 45px;
+    margin-right: auto;
+    margin-left: auto;
 }
 
 .sidebarListItem{
-    display: inline-block;
+    display:inline-flex;
     width: 50%;
     margin-top: 15px;
     cursor: pointer;
+    font-family: 'Varela Round', sans-serif;
+    align-items: center;
+    justify-content: center;
+    
 }
 
 .sidebarSocial{

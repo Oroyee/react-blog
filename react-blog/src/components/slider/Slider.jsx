@@ -43,7 +43,7 @@ export default function Slider() {
     >
         <Overlay>
             <div className="Wrapper">
-                <span className="aboutTitle">來自台中的男孩</span>
+                <span className="aboutTitle">來自台中</span>
                 <span className="aboutDesc">曾想讀台中一中，但是沒有考上</span>
                 <span className="aboutDesc">最後跑去讀五專並順利從二技畢業</span>
                 <span className="aboutDesc">2021年跑來馬爾他，展開新生活</span>

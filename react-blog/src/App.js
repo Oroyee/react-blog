@@ -7,6 +7,7 @@ import Single from "./pages/single/Single";
 import Write from "./pages/write/Write";
 import About from "./pages/about/About";
 import Contact from "./pages/contact/Contact";
+import Webauto from "./pages/webauto/Webauto";
 import {
   BrowserRouter as Router,
   Routes,
@@ -15,6 +16,12 @@ import {
 } from "react-router-dom";
 import { useContext } from "react";
 import { Context } from "./context/Context";
+
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { ScrollToPlugin } from "gsap/ScrollToPlugin";
+
+gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
 // If you are using react-router-dom v6, it looks like Switch has been replaced with Routes.
 function App() {
@@ -28,6 +35,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/web-automation" element={<Webauto />} />
           <Route path="/register" element={user ? <Home/> : <Register/>} />
           <Route path="/login" element={user? <Home/> : <Login/>} />
           <Route path="/write" element={user? <Write/> : <Login/>} />

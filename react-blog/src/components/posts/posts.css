@@ -3,12 +3,17 @@
     display: flex;
     flex-wrap: wrap;
     margin: 20px;
+    
 }
 
 .pagination{
     display: flex;
     justify-content: center;
-    align-items: center;}
+    align-items: center;
+    margin-top: 2vh;
+    margin-left: auto;
+    margin-right: auto;
+  }
 
 .pagination > li {
     list-style: none;
@@ -45,17 +50,17 @@
       margin: 20px;
       justify-content: center;
       align-items: center;
-      /* flex: 9; */
     }
 }
 
-@media screen and (max-width: 410px) {
+@media screen and (max-width: 400px) {
   .pagination{
     display: flex;
     flex-wrap: wrap;
     margin: 1px;
     justify-content: center;
     align-items: center;
-    /* flex: 9; */
+    height: auto;
+    width: auto;
   }
 }

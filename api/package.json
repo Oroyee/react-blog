@@ -14,8 +14,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "engines": {
-    "node": "18.12.1",
-    "yarn": "1.22.19"
+    "node": "^18.12.1",
+    "yarn": "^1.22.19"
   },
   "scripts": {
     "start": "nodemon -L index.js"
