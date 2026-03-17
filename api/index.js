@@ -10,31 +10,42 @@ const categoryRoute = require("./routes/categories");
 const multer = require("multer");
 const path = require("path");
 const cors = require("cors");
-const { post } = require("./routes/users");
-
-app.use(bodyParser.json({limit: '50mb'}));
-app.use(bodyParser.urlencoded({ limit: '50mb', extended: true, parameterLimit: 50000 }));
 
 dotenv.config();
-app.use(cors());
+
+// --- 1. 優化後的 CORS 設定 ---
+const corsOptions = {
+  origin: ["https://www.oroyee.com", "http://localhost:3000"], // 允許你的網域和本地開發環境
+  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+  credentials: true,
+  optionsSuccessStatus: 200
+};
+app.use(cors(corsOptions));
+
+// --- 2. 解決 CSP 報錯的標頭 (新增這段) ---
+app.use((req, res, next) => {
+  res.setHeader(
+    "Content-Security-Policy",
+    "script-src 'self' 'unsafe-inline' 'unsafe-eval'; connect-src 'self' https://oro-blog-production.up.railway.app https://www.oroyee.com;"
+  );
+  next();
+});
+
+// --- 3. Body Parser 設定 ---
+app.use(bodyParser.json({limit: '50mb'}));
+app.use(bodyParser.urlencoded({ limit: '50mb', extended: true, parameterLimit: 50000 }));
 app.use(express.json({limit: '50mb'}));
 
-// app.use(express.urlencoded({limit: '50mb'}));
-// app.use("/images", express.static(path.join(__dirname, "/images")));
-
-
-// app.get('/', (req, res) => { res.send('Hello from Express!')});
-
+// MongoDB 連接
 mongoose
   .connect(process.env.MONGO_URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
-    // useCreateIndex: true,
-    // useFindAndModify:true
   })
-  .then(console.log("Connected to MongoDB"))
+  .then(() => console.log("Connected to MongoDB"))
   .catch((err) => console.log(err));
 
+// Multer 檔案上傳設定
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
     cb(null, "images");
@@ -49,20 +60,7 @@ app.post("/api/upload", upload.single("file"), (req, res) => {
   res.status(200).json("File has been uploaded");
 });
 
-// app.post("api/upload", (req, res) => {
-//   var base64 = req.body.photo
-//   postRoute.insertMany({
-//     photo: base64
-//   },(err, data) =>{
-//     if (err) {
-//       console.log(err);
-//     }
-//     console.log("upload success!");
-//   })
-// })
-
-
-
+// 路由設定
 app.use("/api/auth", authRoute);
 app.use("/api/users", userRoute);
 app.use("/api/posts", postRoute);
