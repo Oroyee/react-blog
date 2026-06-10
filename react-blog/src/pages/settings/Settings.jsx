@@ -12,7 +12,6 @@ export default function Settings() {
     const [password, setPassword] = useState("");
     const [success, setSuccess] = useState(false);
     const {user, dispatch} = useContext(Context);
-    const upload = process.env.REACT_APP_BACKEND_URL + "/api/upload"
     const baseURL = process.env.REACT_APP_BACKEND_URL + "/api/users/"
 
     const handleSubmit = async(e) =>{
@@ -26,30 +25,19 @@ export default function Settings() {
         };
 
         if(file){
-            // const data =  new FormData();
-            // const filename = Date.now() + file.name;
-            // data.append("name", filename);
-            // data.append("file", file);
-            // updatedUser.profilePic = filename;
-            // try{
-            //     await axios.post("https://oroblog.herokuapp.com/api/upload",data);
-            // }catch(err){}
-            const data =  new FormData();
-            var reader = new FileReader();
-            reader.readAsDataURL(file);
-            reader.onload = function(e){
-                var imgcode = e.target.result;
-                console.log(imgcode);
-                updatedUser.profilePic = imgcode;
-                data.append("file",imgcode);
-            }
-            try{
-                // await axios.post("/upload", data);
-                await axios.post(upload,data);
-            }catch(err){}
+            // 頭像以 base64 data URL 直接存進使用者資料
+            const imgcode = await new Promise((resolve, reject) => {
+                const reader = new FileReader();
+                reader.onload = (e) => resolve(e.target.result);
+                reader.onerror = reject;
+                reader.readAsDataURL(file);
+            });
+            updatedUser.profilePic = imgcode;
         }
         try {
-            const res = await axios.put(baseURL +user._id, updatedUser);
+            const res = await axios.put(baseURL +user._id, updatedUser,{
+                headers: { Authorization: "Bearer " + user.token },
+            });
             setSuccess(true);
             dispatch({type:"UPDATE_SUCCESS", payload:res.data});
         } catch (error) {
@@ -60,6 +48,7 @@ export default function Settings() {
     const handleDelete = async() => {
         try {
           await axios.delete(baseURL + user._id, {
+            headers: { Authorization: "Bearer " + user.token },
             data:{username:user.username},
         });
           window.location.replace("/");

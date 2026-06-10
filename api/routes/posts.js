@@ -1,10 +1,12 @@
 const router = require("express").Router();
 const User = require("../models/User");
 const Post = require("../models/Post");
+const verifyToken = require("../middleware/verifyToken");
 
 //CREATE POST
-router.post("/", async (req,res)=>{
-   const newPost = new Post(req.body);
+router.post("/", verifyToken, async (req,res)=>{
+   // 作者一律取自 token，忽略 client 傳來的 username，避免冒名發文
+   const newPost = new Post({ ...req.body, username: req.user.username });
    try{
         const savedPost = await newPost.save();
         res.status(200).json(savedPost);
@@ -15,10 +17,10 @@ router.post("/", async (req,res)=>{
 });
 
 //UPDATE POST
-router.put("/:id", async (req,res)=>{
+router.put("/:id", verifyToken, async (req,res)=>{
     try{
         const post = await Post.findById(req.params.id);
-        if(post.username === req.body.username){
+        if(post.username === req.user.username){
             try{
                 const updatedPost = await Post.findByIdAndUpdate(
                     req.params.id,
@@ -40,10 +42,10 @@ router.put("/:id", async (req,res)=>{
 });
 
 //DELETE POST
-router.delete("/:id", async (req,res)=>{
+router.delete("/:id", verifyToken, async (req,res)=>{
     try{
         const post = await Post.findById(req.params.id);
-        if(post.username === req.body.username){
+        if(post.username === req.user.username){
             try{
                 await post.delete();
                 res.status(200).json("Post has been deleted...");

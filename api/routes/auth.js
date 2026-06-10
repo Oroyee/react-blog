@@ -1,9 +1,11 @@
 const router = require("express").Router();
 const User = require("../models/User");
 const bcrypt = require('bcrypt');
+const jwt = require("jsonwebtoken");
+const verifyToken = require("../middleware/verifyToken");
 
-//REGISTER
-router.post("/5j4hk4", async (req,res)=>{
+//REGISTER（需登入才能建立新帳號 — 防止任何人從公開端點自行註冊）
+router.post("/5j4hk4", verifyToken, async (req,res)=>{
     try{
 
         const salt = await bcrypt.genSalt(10);
@@ -15,7 +17,8 @@ router.post("/5j4hk4", async (req,res)=>{
         });
 
         const user = await newUser.save();
-        res.status(200).json(user)
+        const {password, ...others} = user._doc;
+        res.status(200).json(others)
     } catch(err){
         res.status(500).json(err);
     }
@@ -36,9 +39,15 @@ router.post("/login", async (req,res)=>{
             return res.status(400).json("Wrong credentials");
         }
 
+        const token = jwt.sign(
+            { id: user._id, username: user.username },
+            process.env.JWT_SECRET,
+            { expiresIn: "7d" }
+        );
+
         const {password, ...others} = user._doc;
 
-        res.status(200).json(others);
+        res.status(200).json({ ...others, token });
     }catch (err){
         res.status(500).json(err);
     }
