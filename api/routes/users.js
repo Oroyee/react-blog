@@ -2,23 +2,30 @@ const router = require("express").Router();
 const User = require("../models/User");
 const Post = require("../models/Post");
 const bcrypt = require("bcrypt");
+const verifyToken = require("../middleware/verifyToken");
 
 //UPDATE
-router.put("/:id", async (req,res)=>{
-    if(req.body.userId === req.params.id){
+router.put("/:id", verifyToken, async (req,res)=>{
+    if(req.user.id === req.params.id){
+        // 只更新有提供且非空的欄位，避免空字串覆蓋既有資料（含密碼）
+        const updates = {};
+        if(req.body.username) updates.username = req.body.username;
+        if(req.body.email) updates.email = req.body.email;
+        if(req.body.profilePic) updates.profilePic = req.body.profilePic;
         if(req.body.password){
             const salt = await bcrypt.genSalt(10);
-            req.body.password = await bcrypt.hash(req.body.password, salt);
+            updates.password = await bcrypt.hash(req.body.password, salt);
         }
         try{
             const updatedUser = await User.findByIdAndUpdate(
                 req.params.id,
             {
-                $set: req.body,
+                $set: updates,
             },
             {new:true}
         );
-            res.status(200).json(updatedUser);
+            const {password, ...others} = updatedUser._doc;
+            res.status(200).json(others);
         } catch(err){
             res.status(500).json(err);
         }
@@ -28,17 +35,14 @@ router.put("/:id", async (req,res)=>{
 });
 
 //DELETE
-router.delete("/:id", async (req,res)=>{
-    console.log(req.body.userId);
-    console.log(req.params.id);
-    if(req.body.userId === req.params.id){
+router.delete("/:id", verifyToken, async (req,res)=>{
+    if(req.user.id === req.params.id){
         try{
             const user = await User.findById(req.params.id);
             try{
                 await Post.deleteMany({username:user.username});
                 await User.findByIdAndDelete(req.params.id)
                 res.status(200).json("User has been deleted...");
-                res.status(200).json(updatedUser);
             } catch(err){
                 res.status(500).json(err);
             }

@@ -72,7 +72,9 @@ export default function Write() {
             // }catch(err){}
         }
         try {
-            const res = await axios.post(baseURL,newPost);
+            const res = await axios.post(baseURL,newPost,{
+                headers: { Authorization: "Bearer " + user.token },
+            });
             // const res = await axios.post("/posts",newPost);
             // await new Promise(resolve => setTimeout(resolve, 10000));
             window.location.replace("/post/"+res.data._id);
