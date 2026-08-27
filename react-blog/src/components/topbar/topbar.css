@@ -90,8 +90,12 @@ input[type=checkbox]{
 .topProfile{
     transition: opacity 500ms, display 500ms;
     position: absolute;
+    /* anchor to both edges of .top. With the old width:100vw and no left, this
+       sat at its static position at the end of the flex row and spilled its
+       full width past the viewport */
+    left: 0;
+    right: 0;
     height: 100vh;
-    width: 100vw;
     visibility: hidden;
     opacity: 0;
 }
@@ -161,6 +165,10 @@ input[type=checkbox]{
 }
 
 @media only screen and (min-width: 501px) and (max-width: 820px) {
+    .top{
+        padding: 0 12px;
+        box-sizing: border-box;
+    }
     .topLeft{
         flex: 0;
         display: flex;
@@ -174,6 +182,9 @@ input[type=checkbox]{
     .topCenter{
         transition: opacity 500ms, display 500ms;
         display: block;
+        /* only the absolutely-positioned .topList is visible on mobile, so
+           this must not keep flex-grow:6 and claim the bar's free space */
+        flex: 0 0 auto;
         visibility: hidden;
         opacity: 0;
     }
@@ -189,7 +200,6 @@ input[type=checkbox]{
         text-align: left;
         padding: 16px 0; 
         height: 100vh;
-        width: 100vw;
     }
     .topList > li {
         margin-top: 10vh;
@@ -230,16 +240,17 @@ input[type=checkbox]{
         left: 0;
         text-align: center;
         height: 100vh;
-        width: 100vw;
     }
     .hamburger{
-        display: block; 
-        margin-left: 50%;
+        display: block;
+        /* auto margins share the leftover space instead of adding a fixed
+           percentage of the viewport, which used to push .infoIcon past the
+           right edge of the bar */
+        margin-left: auto;
     }
     .infoIcon{
-        margin-left:10%;
-        display: block; 
-        margin-top: 5px;
+        display: block;
+        margin-left: auto;
     }
     .topIcon{
         font-size: 30px;
@@ -250,6 +261,10 @@ input[type=checkbox]{
     }
 }
 @media screen and (max-width: 500px) {
+    .top{
+        padding: 0 12px;
+        box-sizing: border-box;
+    }
     .topLeft{
         flex: 0;
         display: flex;
@@ -263,6 +278,9 @@ input[type=checkbox]{
     .topCenter{
         transition: opacity 500ms, display 500ms;
         display: block;
+        /* only the absolutely-positioned .topList is visible on mobile, so
+           this must not keep flex-grow:6 and claim the bar's free space */
+        flex: 0 0 auto;
         visibility: hidden;
         opacity: 0;
     }
@@ -278,7 +296,6 @@ input[type=checkbox]{
         text-align: left;
         padding: 16px 0; 
         height: 100vh;
-        width: 100vw;
     }
     .topList > li {
         margin-top: 10vh;
@@ -319,16 +336,15 @@ input[type=checkbox]{
         left: 0;
         text-align: center;
         height: 100vh;
-        width: 100vw;
     }
     .hamburger{
-        display: block; 
-        margin-left: 15%;
+        display: block;
+        /* see the 501-820px block: percentage margins overflowed the bar */
+        margin-left: auto;
     }
     .infoIcon{
-        margin-left:10%;
-        display: block; 
-        margin-top: 5px;
+        display: block;
+        margin-left: auto;
     }
     .topIcon{
         font-size: 30px;

@@ -3,6 +3,14 @@
     /* height: 50vh; */
 }
 
+/* the source is 1920px wide and had no CSS width, so it pushed the document
+   wider than the viewport on any screen narrower than that */
+.header > video{
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
 .headerTitles{
     display: flex;
     flex-direction: column;

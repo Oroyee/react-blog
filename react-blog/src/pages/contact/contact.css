@@ -67,10 +67,27 @@
     margin-left: -8vw;
 }
 
+/* the textarea's cols="50" gives the form an intrinsic ~408px width, which
+   overflowed the viewport on phones */
+.contact-form{
+    width: 100%;
+    max-width: 420px;
+    padding: 0 16px;
+    box-sizing: border-box;
+}
+
 .contact-form-item{
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+.contact-form-item-name,
+.contact-form-item-email,
+.contact-form-item-message{
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
 }
 
 .contact-form-title{

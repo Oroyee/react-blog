@@ -1,5 +1,7 @@
 .post{
     width: 40%;
+    min-width: 0;
+    box-sizing: border-box;
     margin: auto;
     animation: fadeIn 5s;
 }
@@ -60,11 +62,21 @@
     -webkit-line-clamp: 4;
     -webkit-box-orient: vertical;
     margin-bottom: 14px;
+    /* -webkit-box reports its min-content width as if the text never wrapped.
+       A definite width plus min-width:0 keeps that from inflating .post and
+       pushing the whole page wider than the viewport on mobile. */
+    width: 100%;
+    min-width: 0;
+    align-self: stretch;
+    overflow-wrap: anywhere;
 }
 
 @media screen and (max-width: 820px) {
     .post{
         width: 100%;
-        margin: 0px 25px 40px 25px;
+        /* padding, not margin: width:100% + horizontal margins overflows the
+           flex line, which is what broke the sticky topbar's alignment. */
+        margin: 0px 0px 40px 0px;
+        padding: 0px 25px;
     }
 }
