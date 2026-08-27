@@ -1,5 +1,8 @@
 .singlePost{
     flex: 9;
+    /* flex items default to min-width:auto; without this, a long unbreakable
+       URL in the post body stretches the page wider than the viewport */
+    min-width: 0;
 }
 
 .singlePostWrapper{
@@ -74,6 +77,18 @@
     line-height: 25px;
     margin-left: 5vw;
     margin-right: 5vw;
+    /* post bodies come from the editor and often contain bare URLs, which
+       have no break opportunity of their own */
+    overflow-wrap: anywhere;
+}
+
+/* keep editor-pasted media inside the column too */
+.singlePostDesc img,
+.singlePostDesc iframe,
+.singlePostDesc video,
+.singlePostDesc table,
+.singlePostDesc pre{
+    max-width: 100%;
 }
 
 .singlePostDesc::first-letter{
@@ -106,8 +121,9 @@
     align-self: flex-end;
     margin-top: 30px;
     padding-left: 10px;
-
-    margin-left:800px;
+    /* align-self already right-aligns this; the old hard-coded 800px pushed it
+       off-screen for the author on a phone */
+    margin-left: auto;
 }
 
 @media screen and (max-width: 820px) {

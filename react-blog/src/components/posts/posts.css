@@ -1,9 +1,12 @@
 .posts{
     flex: 9;
+    /* flex items default to min-width:auto, so a wide child would stretch
+       .posts past the viewport instead of wrapping/shrinking */
+    min-width: 0;
     display: flex;
     flex-wrap: wrap;
     margin: 20px;
-    
+
 }
 
 .pagination{
