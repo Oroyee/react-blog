@@ -2,6 +2,13 @@
 <html lang="zh-TW">
   <head>
     <meta charset="utf-8" />
+    <script>
+      // /qa-ecosystem is a static page in public/qa-ecosystem/, reachable by URL only.
+      // If this app shell answers for it, load the static page before React starts.
+      if (/^\/qa-ecosystem\/?$/i.test(window.location.pathname)) {
+        window.location.replace("/qa-ecosystem/index.html" + window.location.search + window.location.hash);
+      }
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
     <meta name="description" content="馬爾他，一座人口不到50萬的小島，究竟擁有什麼魅力？來自台灣的男孩-偶肉(Oro)，將與你分享在馬爾他工作、生活的日常以及在歐洲接受到的各種文化衝擊">

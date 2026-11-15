@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <script>
+    // Asset paths are relative, so the page needs a trailing slash: /qa-ecosystem -> /qa-ecosystem/
+    (function () {
+      var p = window.location.pathname;
+      if (window.location.protocol !== "file:" && !/\/$/.test(p) && !/\.html?$/.test(p)) {
+        window.location.replace(p + "/" + window.location.search + window.location.hash);
+      }
+    })();
+  </script>
+  <title data-i18n="meta.title">Chiliz QA Ecosystem — from ticket to evidence</title>
+  <meta name="description" content="The Chiliz QA Ecosystem: four pieces, one loop, from ticket to evidence.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23000'/%3E%3Ccircle cx='16' cy='16' r='9' fill='none' stroke='%23bf5af2' stroke-width='2'/%3E%3Ccircle cx='16' cy='7' r='2.4' fill='%2364d2ff'/%3E%3Ccircle cx='25' cy='16' r='2.4' fill='%23bf5af2'/%3E%3Ccircle cx='16' cy='25' r='2.4' fill='%23ff375f'/%3E%3Ccircle cx='7' cy='16' r='2.4' fill='%2330d158'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="assets/css/site.css">
+</head>
+<body>
+  <a class="skip-link" href="#main" data-i18n="a11y.skip">Skip to content</a>
+
+  <header class="site-header">
+    <div class="bar">
+      <a class="brand" href="#top">
+        <svg class="brand-mark" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <circle cx="12" cy="12" r="8.4" stroke="#bf5af2" stroke-width="1.5"></circle>
+          <circle cx="12" cy="4.6" r="1.35" fill="#64d2ff"></circle>
+          <circle cx="19.4" cy="12" r="1.35" fill="#bf5af2"></circle>
+          <circle cx="12" cy="19.4" r="1.35" fill="#ff375f"></circle>
+          <circle cx="4.6" cy="12" r="1.35" fill="#30d158"></circle>
+        </svg>
+        <span data-i18n="nav.brand">Chiliz QA Ecosystem</span>
+      </a>
+
+      <nav class="nav" aria-label="Sections" data-i18n-aria="a11y.nav">
+        <div class="nav-track">
+          <a href="#why" data-i18n="nav.why">Why</a>
+          <a href="#loop" data-i18n="nav.loop">Loop</a>
+          <a href="#factory" data-i18n="nav.factory">Factory</a>
+          <a href="#proof" data-i18n="nav.proof">Proof</a>
+          <a href="#office" data-i18n="nav.office">Office</a>
+          <a href="#supervisor" data-i18n="nav.supervisor">Supervisor</a>
+          <a href="#remote" data-i18n="nav.remote">Remote</a>
+          <a href="#evidence" data-i18n="nav.evidence">Reports</a>
+          <a href="#hotfix" data-i18n="nav.hotfix">Hotfix</a>
+          <a href="#safety" data-i18n="nav.safety">Safety</a>
+          <a href="#start" data-i18n="nav.start">Start</a>
+        </div>
+      </nav>
+
+      <div class="lang" role="group" aria-label="Language" data-i18n-aria="a11y.lang">
+        <button type="button" data-lang="en" aria-pressed="true" aria-label="Show this page in English" data-i18n-aria="a11y.langEn">EN</button>
+        <span class="lang-sep" aria-hidden="true">|</span>
+        <button type="button" data-lang="zh" aria-pressed="false" aria-label="Show this page in Traditional Chinese" data-i18n-aria="a11y.langZh">中文</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <section class="section hero" id="top">
+      <div class="container hero-inner">
+        <p class="kicker" data-i18n="hero.kicker">Introducing</p>
+        <h1 class="display"><span class="grad-text" data-i18n="hero.title">Chiliz QA Ecosystem</span></h1>
+        <p class="tagline" data-i18n="hero.tagline">From ticket to evidence. Without the handoffs.</p>
+        <p class="lead" data-fact="K:F02"><span data-i18n="hero.lead">Four pieces that work as one loop.</span></p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="#loop" data-i18n="hero.cta1">See how it works</a>
+          <a class="btn btn-ghost" href="#office" data-i18n="hero.cta2">Tour the office</a>
+        </div>
+        <figure class="hero-figure reveal">
+          <div class="shot-frame">
+            <button class="shot" type="button" aria-haspopup="dialog" data-full="assets/img/office/floor-dark-1440.png">
+              <img src="assets/img/office/floor-dark-960.jpg" width="960" height="600" fetchpriority="high" decoding="async" alt="The Agent Office floor, dark theme." data-i18n-alt="hero.imageAlt">
+            </button>
+          </div>
+          <figcaption class="status" data-fact="N:01 N:03">
+            <span class="status-dot" aria-hidden="true"></span>
+            <span data-i18n="hero.status">Agent Office v2 live since 11 Nov 2026, supervisor on.</span>
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="section why" id="why">
+      <div class="container">
+        <p class="kicker" data-i18n="why.kicker">The problem</p>
+        <h2 data-i18n="why.title">How much of QA is actually QA?</h2>
+        <p class="lead narrow" data-i18n="why.sub">Verify in the browser. Write back to Linear. Sync the sheet. Repeat.</p>
+        <div class="stat-block reveal">
+          <p class="stat" data-fact="K:F01" data-i18n="why.statValue">&gt;75%</p>
+          <div class="stat-copy" data-fact="K:F01">
+            <p class="stat-label" data-i18n="why.statLabel">of wall-clock time was overhead in one measured batch.</p>
+            <p class="stat-note" data-i18n="why.statNote">Re-reading tickets. Copying steps. Screenshots. Writing results back. Not testing.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section loop" id="loop">
+      <div class="container">
+        <p class="kicker" data-i18n="loop.kicker">The loop</p>
+        <h2 data-i18n="loop.title">Four pieces. One loop.</h2>
+        <p class="lead narrow" data-i18n="loop.lead">Each piece is useful alone. The point is the chain.</p>
+
+        <div class="loop-stage reveal" role="group" aria-label="The four pieces of the loop" data-i18n-aria="loop.stageAria">
+          <svg class="ring" viewBox="0 0 600 600" fill="none" aria-hidden="true">
+            <defs>
+              <linearGradient id="ringGrad" x1="60" y1="540" x2="540" y2="60" gradientUnits="userSpaceOnUse">
+                <stop offset="0" stop-color="#64d2ff"></stop>
+                <stop offset=".48" stop-color="#bf5af2"></stop>
+                <stop offset="1" stop-color="#ff375f"></stop>
+              </linearGradient>
+            </defs>
+            <circle class="ring-track" cx="300" cy="300" r="214" stroke="rgba(255,255,255,.07)" stroke-width="2"></circle>
+            <circle class="ring-flow" cx="300" cy="300" r="214" stroke="url(#ringGrad)" stroke-width="2" stroke-linecap="round" stroke-dasharray="70 64"></circle>
+          </svg>
+
+          <div class="loop-core" aria-live="polite">
+            <p class="loop-note" id="loop-note" data-i18n="loop.note.extension">Your browser, already logged in</p>
+          </div>
+
+          <button class="loop-node node-extension is-active" type="button" data-node="extension" aria-pressed="true" aria-label="Highlight Extension" data-i18n-aria="loop.nodeAria.extension">
+            <span class="node-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2.5"></rect><path d="M3 9h18"></path><circle cx="6.2" cy="6.5" r=".6" fill="currentColor" stroke="none"></circle><circle cx="8.6" cy="6.5" r=".6" fill="currentColor" stroke="none"></circle></svg>
+            </span>
+            <span class="node-name" data-i18n="loop.node.extension">Extension</span>
+            <span class="node-line" data-i18n="loop.one.extension">Your browser, already logged in</span>
+          </button>
+
+          <button class="loop-node node-bridge" type="button" data-node="bridge" aria-pressed="false" aria-label="Highlight Bridge" data-i18n-aria="loop.nodeAria.bridge">
+            <span class="node-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 14.5 6.8 17.2a3.5 3.5 0 0 1-5-5l2.7-2.7"></path><path d="M14.5 9.5l2.7-2.7a3.5 3.5 0 0 1 5 5l-2.7 2.7"></path><path d="M8 16l8-8"></path></svg>
+            </span>
+            <span class="node-name" data-i18n="loop.node.bridge">Bridge</span>
+            <span class="node-line" data-i18n="loop.one.bridge">Runs agents on this Mac</span>
+          </button>
+
+          <button class="loop-node node-office" type="button" data-node="office" aria-pressed="false" aria-label="Highlight Agent Office" data-i18n-aria="loop.nodeAria.office">
+            <span class="node-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7.5" height="7.5" rx="1.5"></rect><rect x="13.5" y="3" width="7.5" height="7.5" rx="1.5"></rect><rect x="3" y="13.5" width="7.5" height="7.5" rx="1.5"></rect><rect x="13.5" y="13.5" width="7.5" height="7.5" rx="1.5"></rect></svg>
+            </span>
+            <span class="node-name" data-i18n="loop.node.office">Agent Office</span>
+            <span class="node-line" data-i18n="loop.one.office">One screen for every agent</span>
+          </button>
+
+          <button class="loop-node node-factory" type="button" data-node="factory" aria-pressed="false" aria-label="Highlight QA AI Factory" data-i18n-aria="loop.nodeAria.factory">
+            <span class="node-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 21 8l-9 5-9-5 9-5Z"></path><path d="m3 12 9 5 9-5"></path><path d="m3 16 9 5 9-5"></path></svg>
+            </span>
+            <span class="node-name" data-i18n="loop.node.factory">QA AI Factory</span>
+            <span class="node-line" data-i18n="loop.one.factory">Tickets in, evidence out</span>
+          </button>
+        </div>
+
+        <p class="loop-label" data-i18n="loop.label">Every check runs in your real browser. Evidence comes back.</p>
+
+        <div class="cards cards-4">
+          <article class="card card-extension is-active" data-card="extension" style="--accent:var(--c-ext)">
+            <div class="card-head">
+              <span class="card-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2.5"></rect><path d="M3 9h18"></path><circle cx="6.2" cy="6.5" r=".6" fill="currentColor" stroke="none"></circle><circle cx="8.6" cy="6.5" r=".6" fill="currentColor" stroke="none"></circle></svg>
+              </span>
+              <h3 data-i18n="loop.card.extension.title">Extension</h3>
+            </div>
+            <p data-i18n="loop.card.extension.desc">Real sessions, wallets, back office.</p>
+          </article>
+
+          <article class="card card-bridge" data-card="bridge" style="--accent:var(--c-bridge)">
+            <div class="card-head">
+              <span class="card-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 14.5 6.8 17.2a3.5 3.5 0 0 1-5-5l2.7-2.7"></path><path d="M14.5 9.5l2.7-2.7a3.5 3.5 0 0 1 5 5l-2.7 2.7"></path><path d="M8 16l8-8"></path></svg>
+              </span>
+              <h3 data-i18n="loop.card.bridge.title">Bridge</h3>
+            </div>
+            <p data-i18n="loop.card.bridge.desc">Local, parallel, guarded.</p>
+          </article>
+
+          <article class="card card-office" data-card="office" style="--accent:var(--c-office)">
+            <div class="card-head">
+              <span class="card-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7.5" height="7.5" rx="1.5"></rect><rect x="13.5" y="3" width="7.5" height="7.5" rx="1.5"></rect><rect x="3" y="13.5" width="7.5" height="7.5" rx="1.5"></rect><rect x="13.5" y="13.5" width="7.5" height="7.5" rx="1.5"></rect></svg>
+              </span>
+              <h3 data-i18n="loop.card.office.title">Agent Office</h3>
+            </div>
+            <p data-i18n="loop.card.office.desc">Every agent, one screen, always on.</p>
+          </article>
+
+          <article class="card card-factory" data-card="factory" style="--accent:var(--c-factory)">
+            <div class="card-head">
+              <span class="card-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 21 8l-9 5-9-5 9-5Z"></path><path d="m3 12 9 5 9-5"></path><path d="m3 16 9 5 9-5"></path></svg>
+              </span>
+              <h3 data-i18n="loop.card.factory.title">QA AI Factory</h3>
+            </div>
+            <p data-i18n="loop.card.factory.desc">Tickets in. Evidence out.</p>
+            <p class="card-stages" data-i18n="loop.card.factory.stages">pre-stage → verify → write-back → sheets → automate</p>
+          </article>
+        </div>
+
+        <ul class="trust-row" aria-label="Trust" data-i18n-aria="loop.trustAria">
+          <li data-fact="K:F04"><span data-i18n="loop.trust.local">Local-first</span></li>
+          <li data-fact="K:F41"><span data-i18n="loop.trust.ports">No inbound ports</span></li>
+          <li data-fact="K:F61"><span data-i18n="loop.trust.creds">Credentials stay on the Mac</span></li>
+          <li data-fact="K:F07"><span data-i18n="loop.trust.human">Human judgement stays human</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section factory" id="factory">
+      <div class="container">
+        <p class="kicker" data-i18n="factory.kicker">Under the hood</p>
+        <h2 data-i18n="factory.title">The factory floor.</h2>
+        <p class="lead narrow" data-i18n="factory.lead">Tickets come in. Verified evidence goes back.</p>
+
+        <div class="stepper" role="group" aria-label="Factory stages" data-i18n-aria="factory.groupAria">
+          <button class="step is-active" type="button" data-step="poller" aria-pressed="true" aria-controls="step-poller"><span data-i18n="factory.step.poller">Linear poller</span></button>
+          <button class="step" type="button" data-step="prestage" aria-pressed="false" aria-controls="step-prestage"><span data-i18n="factory.step.prestage">Pre-stage</span></button>
+          <button class="step" type="button" data-step="verify" aria-pressed="false" aria-controls="step-verify"><span data-i18n="factory.step.verify">Verify</span></button>
+          <button class="step" type="button" data-step="writeback" aria-pressed="false" aria-controls="step-writeback"><span data-i18n="factory.step.writeback">Write-back</span></button>
+          <button class="step" type="button" data-step="sheets" aria-pressed="false" aria-controls="step-sheets"><span data-i18n="factory.step.sheets">Sheets</span></button>
+          <button class="step" type="button" data-step="automate" aria-pressed="false" aria-controls="step-automate"><span data-i18n="factory.step.automate">Automate</span></button>
+        </div>
+
+        <div class="step-panels reveal">
+          <div class="step-panel is-active" id="step-poller" data-panel="poller" data-fact="N:11">
+            <h3 data-i18n="factory.panel.poller.title">Linear, checked every 15 minutes.</h3>
+            <p data-i18n="factory.panel.poller.body">Submitted to QA goes to Integration. Ready to release goes to Staging.</p>
+          </div>
+          <div class="step-panel" id="step-prestage" data-panel="prestage" data-fact="K:F05">
+            <h3 data-i18n="factory.panel.prestage.title">One manifest, before anything runs.</h3>
+            <p data-i18n="factory.panel.prestage.body">Pre-stage classifies, groups and skips what cannot run.</p>
+          </div>
+          <div class="step-panel" id="step-verify" data-panel="verify" data-fact="K:F06 K:F07 N:15">
+            <h3 data-i18n="factory.panel.verify.title">Executor and Auditor. Independent.</h3>
+            <p data-i18n="factory.panel.verify.body">The Executor runs and writes evidence. An Auditor with fresh context re-judges without re-running.</p>
+            <div class="lanes">
+              <div class="lane">
+                <p class="lane-name" data-i18n="factory.lane.executor">Executor</p>
+                <p class="lane-desc" data-i18n="factory.lane.executorDesc">Runs. Collects evidence.</p>
+              </div>
+              <div class="lane">
+                <p class="lane-name" data-i18n="factory.lane.auditor">Auditor</p>
+                <p class="lane-desc" data-i18n="factory.lane.auditorDesc">Fresh context. Re-judges. Never re-runs.</p>
+              </div>
+            </div>
+            <p class="rule-line" data-i18n="factory.rule">Agree → a result. Disagree → a human.</p>
+          </div>
+          <div class="step-panel" id="step-writeback" data-panel="writeback" data-fact="K:F08">
+            <h3 data-i18n="factory.panel.writeback.title">Back to Linear, in English.</h3>
+            <p data-i18n="factory.panel.writeback.body">Written with markers and no status changes.</p>
+          </div>
+          <div class="step-panel" id="step-sheets" data-panel="sheets" data-fact="K:F09">
+            <h3 data-i18n="factory.panel.sheets.title">The same run, projected.</h3>
+            <p data-i18n="factory.panel.sheets.body">Google Sheets shows the same truth, with no retyping.</p>
+          </div>
+          <div class="step-panel" id="step-automate" data-panel="automate" data-fact="K:F10">
+            <h3 data-i18n="factory.panel.automate.title">Repeat passes become specs.</h3>
+            <p data-i18n="factory.panel.automate.body">Cases that pass twice in the same environment become Playwright specs.</p>
+          </div>
+        </div>
+
+        <div class="factory-meta">
+          <div class="chips">
+            <span class="chip" data-fact="N:11"><span data-i18n="factory.route.qa">Submitted to QA</span> <span class="arrow" aria-hidden="true">→</span> <span data-i18n="factory.route.integration">Integration</span></span>
+            <span class="chip" data-fact="N:11"><span data-i18n="factory.route.release">Ready to release</span> <span class="arrow" aria-hidden="true">→</span> <span data-i18n="factory.route.staging">Staging</span></span>
+          </div>
+          <p class="batch-line" data-fact="N:12"><span data-i18n="factory.batch">Up to 20 test cases per batch.</span></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section proof" id="proof">
+      <div class="container">
+        <p class="kicker" data-i18n="proof.kicker">Evidence</p>
+        <h2 data-i18n="proof.title">Real batches, not a benchmark.</h2>
+
+        <div class="tiles">
+          <div class="tile reveal" data-fact="K:F11">
+            <p class="tile-value" data-i18n="proof.v1">12/12</p>
+            <p class="tile-label" data-i18n="proof.t1">PASS in 10 min</p>
+            <p class="tile-note" data-i18n="proof.t1note">Batch 5, browser lane, 0 kills.</p>
+          </div>
+          <div class="tile reveal" data-fact="K:F15">
+            <p class="tile-value" data-i18n="proof.v2">16 → 2.5</p>
+            <p class="tile-label" data-i18n="proof.t2">min · Auditor median</p>
+            <p class="tile-note" data-i18n="proof.t2note">One audit pass, batch 3 to batch 4.</p>
+          </div>
+          <div class="tile reveal" data-fact="K:F21">
+            <p class="tile-value" data-i18n="proof.v3">18</p>
+            <p class="tile-label" data-i18n="proof.t3">verified cases, now Playwright specs</p>
+            <p class="tile-note" data-i18n="proof.t3note">Turned into 12 spec files.</p>
+          </div>
+          <div class="tile reveal" data-fact="N:13">
+            <p class="tile-value" data-i18n="proof.v4">163</p>
+            <p class="tile-label" data-i18n="proof.t4">test-case runs in one week</p>
+            <p class="tile-note" data-i18n="proof.t4note">14 batches, all written back to Linear.</p>
+          </div>
+          <div class="tile reveal" data-fact="N:14">
+            <p class="tile-value" data-i18n="proof.v5">13 of 19</p>
+            <p class="tile-label" data-i18n="proof.t5">failed cases now pass after the staging deploy</p>
+            <p class="tile-note" data-i18n="proof.t5note">Staging rerun, after the deploy.</p>
+          </div>
+        </div>
+
+        <p class="honest" data-fact="N:14">
+          <span class="honest-mark" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M12 8v5"></path><circle cx="12" cy="16.4" r=".7" fill="currentColor" stroke="none"></circle></svg>
+          </span>
+          <span data-i18n="proof.honest">In the latest rerun, 20 of 39 runs still needed a human, mostly because of missing staging data.</span>
+        </p>
+      </div>
+    </section>
+
+    <section class="section office" id="office">
+      <div class="container">
+        <p class="kicker" data-i18n="office.kicker">The product</p>
+        <h2 data-i18n="office.title">Every agent. One screen.</h2>
+        <p class="lead narrow" data-fact="N:01"><span data-i18n="office.lead">The live Agent Office v2, in both themes.</span></p>
+
+        <div class="gallery">
+          <div class="gallery-bar">
+            <div class="tablist" role="tablist" aria-label="Office screens" data-i18n-aria="office.tabsAria">
+              <button role="tab" id="tab-floor" aria-controls="panel-floor" aria-selected="true" tabindex="0" data-tab="floor"><span data-i18n="office.tab.floor">Office floor</span></button>
+              <button role="tab" id="tab-workshop" aria-controls="panel-workshop" aria-selected="false" tabindex="-1" data-tab="workshop"><span data-i18n="office.tab.workshop">Build workshop</span></button>
+              <button role="tab" id="tab-supervisor" aria-controls="panel-supervisor" aria-selected="false" tabindex="-1" data-tab="supervisor"><span data-i18n="office.tab.supervisor">Supervisor office</span></button>
+              <button role="tab" id="tab-talk" aria-controls="panel-talk" aria-selected="false" tabindex="-1" data-tab="talk"><span data-i18n="office.tab.talk">Talk</span></button>
+              <button role="tab" id="tab-board" aria-controls="panel-board" aria-selected="false" tabindex="-1" data-tab="board"><span data-i18n="office.tab.board">Task board</span></button>
+            </div>
+            <div class="theme-switch" role="group" aria-label="Screenshot theme" data-i18n-aria="office.themeAria">
+              <button type="button" data-theme="dark" aria-pressed="true"><span data-i18n="office.theme.dark">Dark</span></button>
+              <button type="button" data-theme="light" aria-pressed="false"><span data-i18n="office.theme.light">Light</span></button>
+            </div>
+          </div>
+
+          <div class="panels">
+            <div class="tabpanel is-active" role="tabpanel" id="panel-floor" aria-labelledby="tab-floor" data-panel="floor">
+              <div class="panel-shot">
+                <div class="shot-frame">
+                  <button class="shot" type="button" aria-haspopup="dialog" data-full="assets/img/office/floor-dark-1440.png">
+                    <img src="assets/img/office/floor-dark-960.jpg" width="960" height="600" loading="lazy" decoding="async" alt="The office floor, dark theme." data-alt-dark="office.alt.floorDark" data-alt-light="office.alt.floorLight">
+                  </button>
+                </div>
+              </div>
+              <div class="panel-copy">
+                <h3 data-i18n="office.tab.floor">Office floor</h3>
+                <p class="panel-desc" data-fact="N:01 N:04" data-i18n="office.desc.floor">The v2 floor: agents are chili characters, and every function has a room.</p>
+                <ul class="points">
+                  <li data-i18n="office.point.floor1">Rooms down the left, agents on the floor.</li>
+                  <li data-i18n="office.point.floor2">Workers n of N, Needs you, connection state.</li>
+                  <li data-i18n="office.point.floor3">A day and night shift clock.</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="tabpanel" role="tabpanel" id="panel-workshop" aria-labelledby="tab-workshop" data-panel="workshop">
+              <div class="panel-shot">
+                <div class="shot-frame">
+                  <button class="shot" type="button" aria-haspopup="dialog" data-full="assets/img/office/workshop-dark-1440.png">
+                    <img src="assets/img/office/workshop-dark-960.jpg" width="960" height="600" loading="lazy" decoding="async" alt="The build workshop, dark theme." data-alt-dark="office.alt.workshopDark" data-alt-light="office.alt.workshopLight">
+                  </button>
+                </div>
+              </div>
+              <div class="panel-copy">
+                <h3 data-i18n="office.tab.workshop">Build workshop</h3>
+                <p class="panel-desc" data-fact="N:04" data-i18n="office.desc.workshop">Where agents write, edit and test code.</p>
+                <ul class="points">
+                  <li data-i18n="office.point.workshop1">One selected agent, one current task.</li>
+                  <li data-i18n="office.point.workshop2">Stop, rename, or open the conversation.</li>
+                  <li data-i18n="office.point.workshop3">A crew board with live status.</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="tabpanel" role="tabpanel" id="panel-supervisor" aria-labelledby="tab-supervisor" data-panel="supervisor">
+              <div class="panel-shot">
+                <div class="shot-frame">
+                  <button class="shot" type="button" aria-haspopup="dialog" data-full="assets/img/office/supervisor-dark-1440.png">
+                    <img src="assets/img/office/supervisor-dark-960.jpg" width="960" height="600" loading="lazy" decoding="async" alt="The supervisor office, dark theme." data-alt-dark="office.alt.supervisorDark" data-alt-light="office.alt.supervisorLight">
+                  </button>
+                </div>
+              </div>
+              <div class="panel-copy">
+                <h3 data-i18n="office.tab.supervisor">Supervisor office</h3>
+                <p class="panel-desc" data-fact="N:04 N:08" data-i18n="office.desc.supervisor">The supervisor plans runs and asks for your approval.</p>
+                <ul class="points">
+                  <li data-i18n="office.point.supervisor1">Plan only, no automatic dispatch.</li>
+                  <li data-i18n="office.point.supervisor2">A charter starts every run.</li>
+                  <li data-i18n="office.point.supervisor3">A team lead is chosen per run.</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="tabpanel" role="tabpanel" id="panel-talk" aria-labelledby="tab-talk" data-panel="talk">
+              <div class="panel-shot">
+                <div class="shot-frame">
+                  <button class="shot" type="button" aria-haspopup="dialog" data-full="assets/img/office/talk-dark-1440.png">
+                    <img src="assets/img/office/talk-dark-960.jpg" width="960" height="600" loading="lazy" decoding="async" alt="The Talk drawer, dark theme." data-alt-dark="office.alt.talkDark" data-alt-light="office.alt.talkLight">
+                  </button>
+                </div>
+              </div>
+              <div class="panel-copy">
+                <h3 data-i18n="office.tab.talk">Talk</h3>
+                <p class="panel-desc" data-fact="N:06" data-i18n="office.desc.talk">Read the transcript, then send the next message.</p>
+                <ul class="points">
+                  <li data-i18n="office.point.talk1">The transcript and the next message in one drawer.</li>
+                  <li data-i18n="office.point.talk2">Ask first, or Build it.</li>
+                  <li data-i18n="office.point.talk3">Send stays inside the room.</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="tabpanel" role="tabpanel" id="panel-board" aria-labelledby="tab-board" data-panel="board">
+              <div class="panel-shot">
+                <div class="shot-frame">
+                  <button class="shot" type="button" aria-haspopup="dialog" data-full="assets/img/office/board-dark-1440.png">
+                    <img src="assets/img/office/board-dark-960.jpg" width="960" height="600" loading="lazy" decoding="async" alt="The task board, dark theme." data-alt-dark="office.alt.boardDark" data-alt-light="office.alt.boardLight">
+                  </button>
+                </div>
+              </div>
+              <div class="panel-copy">
+                <h3 data-i18n="office.tab.board">Task board</h3>
+                <p class="panel-desc" data-fact="N:07" data-i18n="office.desc.board">A shared board, versioned with git.</p>
+                <ul class="points">
+                  <li data-i18n="office.point.board1">Todo, Doing, Blocked, Done.</li>
+                  <li data-i18n="office.point.board2">Plan notes live in board.md.</li>
+                  <li data-i18n="office.point.board3">Move cards with the arrow keys.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <p class="proof-line" data-fact="N:02"><span data-i18n="office.proof">1,347 unit and 111 end-to-end tests green before the release.</span></p>
+      </div>
+    </section>
+
+    <section class="section supervisor" id="supervisor">
+      <div class="container">
+        <p class="kicker" data-i18n="supervisor.kicker">Supervised runs</p>
+        <h2 data-i18n="supervisor.title">A charter in. A finished run out.</h2>
+
+        <ol class="run-steps reveal">
+          <li>
+            <span class="run-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3h7l4 4v14H7z"></path><path d="M14 3v4h4"></path><path d="M9.5 12h6"></path><path d="M9.5 16h4"></path></svg>
+            </span>
+            <h3 data-i18n="supervisor.step1.title">Charter</h3>
+            <p data-i18n="supervisor.step1.body">One goal, a few limits, and the checkpoints where you decide.</p>
+          </li>
+          <li>
+            <span class="run-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="m15.5 8.5-2 5-5 2 2-5 5-2Z"></path></svg>
+            </span>
+            <h3 data-i18n="supervisor.step2.title">Team lead plans</h3>
+            <p data-i18n="supervisor.step2.body">A headless Claude Code, a Chiliz session, or an external window.</p>
+          </li>
+          <li>
+            <span class="run-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m8 8-4 4 4 4"></path><path d="m16 8 4 4-4 4"></path><path d="m13.5 5-3 14"></path></svg>
+            </span>
+            <h3 data-i18n="supervisor.step3.title">Agents build</h3>
+            <p data-i18n="supervisor.step3.body">In an isolated worktree, a new session per step.</p>
+          </li>
+          <li>
+            <span class="run-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="m8 12.2 2.7 2.6L16.2 9"></path></svg>
+            </span>
+            <h3 data-i18n="supervisor.step4.title">Checks after every write</h3>
+            <p data-i18n="supervisor.step4.body">Typecheck, lint, tests and build, before the next step.</p>
+          </li>
+          <li>
+            <span class="run-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="9.5" cy="8.5" r="3.5"></circle><path d="M3.5 20a6 6 0 0 1 12 0"></path><path d="m16 14 2 2 3.5-4"></path></svg>
+            </span>
+            <h3 data-i18n="supervisor.step5.title">You accept</h3>
+            <p data-i18n="supervisor.step5.body">Final acceptance is always human, enforced in code for every charter.</p>
+          </li>
+        </ol>
+
+        <div class="case-card reveal">
+          <div class="case-copy">
+            <p class="kicker kicker-small" data-i18n="supervisor.case.kicker">Case study</p>
+            <h3 data-i18n="supervisor.case.title">One night. Three redesigns.</h3>
+            <p class="case-desc" data-fact="C:F2" data-i18n="supervisor.case.desc">Three concepts, three runs, one supervisor each.</p>
+          </div>
+          <div class="case-stats">
+            <div class="case-stat" data-fact="C:F10">
+              <p class="case-value" data-i18n="supervisor.case.v1">87</p>
+              <p class="case-label" data-i18n="supervisor.case.s1">steps completed</p>
+            </div>
+            <div class="case-stat" data-fact="C:F10">
+              <p class="case-value" data-i18n="supervisor.case.v2">95</p>
+              <p class="case-label" data-i18n="supervisor.case.s2">approved by policy</p>
+            </div>
+            <div class="case-stat" data-fact="C:F10">
+              <p class="case-value" data-i18n="supervisor.case.v3">0</p>
+              <p class="case-label" data-i18n="supervisor.case.s3">escalated to a human</p>
+            </div>
+            <div class="case-stat" data-fact="C:F13">
+              <p class="case-value" data-i18n="supervisor.case.v4">14</p>
+              <p class="case-label" data-i18n="supervisor.case.s4">live fixes</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="concepts">
+          <figure class="concept">
+            <div class="shot-frame">
+              <button class="shot" type="button" aria-haspopup="dialog" data-full="assets/img/concepts/concept-office-sim-1440.png">
+                <img src="assets/img/concepts/concept-office-sim-960.jpg" width="960" height="600" loading="lazy" decoding="async" alt="Office Sim: an isometric office floor." data-i18n-alt="supervisor.alt.officeSim">
+              </button>
+            </div>
+            <figcaption>
+              <h3 data-i18n="supervisor.concept1.title">Office Sim</h3>
+              <p data-fact="C:F23" data-i18n="supervisor.concept1.body">An isometric office floor, with agents as chili characters.</p>
+            </figcaption>
+          </figure>
+          <figure class="concept">
+            <div class="shot-frame">
+              <button class="shot" type="button" aria-haspopup="dialog" data-full="assets/img/concepts/concept-pixel-rpg-1440.png">
+                <img src="assets/img/concepts/concept-pixel-rpg-960.jpg" width="960" height="600" loading="lazy" decoding="async" alt="Pixel Studio RPG: a party rail and a pixel studio map." data-i18n-alt="supervisor.alt.pixelRpg">
+              </button>
+            </div>
+            <figcaption>
+              <h3 data-i18n="supervisor.concept2.title">Pixel Studio RPG</h3>
+              <p data-fact="C:F24" data-i18n="supervisor.concept2.body">A party rail, a pixel studio map, and approvals as quest cards.</p>
+            </figcaption>
+          </figure>
+          <figure class="concept">
+            <div class="shot-frame">
+              <button class="shot" type="button" aria-haspopup="dialog" data-full="assets/img/concepts/concept-matchday-1440.png">
+                <img src="assets/img/concepts/concept-matchday-960.jpg" width="960" height="600" loading="lazy" decoding="async" alt="Matchday: agents as players on a pitch." data-i18n-alt="supervisor.alt.matchday">
+              </button>
+            </div>
+            <figcaption>
+              <h3 data-i18n="supervisor.concept3.title">Matchday</h3>
+              <p data-fact="C:F25" data-i18n="supervisor.concept3.body">Agents as players, a match clock, and approvals as referee calls.</p>
+            </figcaption>
+          </figure>
+        </div>
+
+        <p class="closing-line" data-fact="N:09 N:01"><span data-i18n="supervisor.closing">After round 2, Office Sim became v2.</span></p>
+      </div>
+    </section>
+
+    <section class="section remote" id="remote">
+      <div class="container">
+        <p class="kicker" data-i18n="remote.kicker">On your phone</p>
+        <h2 data-i18n="remote.title">Home shows state. Messages does the work.</h2>
+        <div class="remote-grid">
+          <figure class="phone">
+            <div class="phone-shell">
+              <video controls muted playsinline preload="none" width="720" height="1226" poster="assets/media/slack-home-demo-poster.jpg" aria-label="Recording of the Slack Home dashboard" data-i18n-aria="remote.videoAria">
+                <source src="assets/media/slack-home-demo.webm" type="video/webm">
+              </video>
+            </div>
+          </figure>
+          <div class="remote-copy">
+            <p class="lead" data-fact="K:F41"><span data-i18n="remote.lead">Outbound only. No VPN. No inbound port.</span></p>
+            <div class="cards cards-3 command-cards">
+              <article class="card command" style="--accent:var(--c-slack)">
+                <h3><code>list</code></h3>
+                <p data-fact="K:F98" data-i18n="remote.list">Agents, each with Details, Recent, Message and Stop.</p>
+              </article>
+              <article class="card command" style="--accent:var(--c-slack)">
+                <h3><code>ask</code></h3>
+                <p data-fact="K:F102" data-i18n="remote.ask">Confirm, send, then wait for the reply in the thread.</p>
+              </article>
+              <article class="card command" style="--accent:var(--c-slack)">
+                <h3><code>do</code></h3>
+                <p data-fact="K:F103 K:F46 K:F50" data-i18n="remote.do">A build task in a new worktree. Off by default. Push disabled.</p>
+              </article>
+            </div>
+            <p class="cmds" role="group" aria-label="More commands" data-i18n-aria="remote.cmdsAria"><code>status</code> <span aria-hidden="true">·</span> <code>tail</code> <span aria-hidden="true">·</span> <code>stop</code> <span aria-hidden="true">·</span> <code>runs</code> <span aria-hidden="true">·</span> <code>review</code> <span aria-hidden="true">·</span> <code>clear</code></p>
+            <p class="safe-line" data-fact="K:F104" data-i18n="remote.safety">Confirms first. No deletes, stop-all, settings or BO re-login.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section evidence" id="evidence">
+      <div class="container">
+        <p class="kicker" data-i18n="evidence.kicker">Reports</p>
+        <h2 data-i18n="evidence.title">Every batch ships its own report.</h2>
+        <div class="evidence-grid">
+          <figure class="report-video">
+            <div class="shot-frame">
+              <video controls muted playsinline preload="none" width="960" height="540" poster="assets/media/report-demo-poster.jpg" aria-label="Recording of a batch report" data-i18n-aria="evidence.videoAria">
+                <source src="assets/media/report-demo.webm" type="video/webm">
+              </video>
+            </div>
+            <figcaption data-fact="N:16" data-i18n="evidence.caption">One HTML file per batch.</figcaption>
+          </figure>
+          <div class="evidence-copy">
+            <ul class="points points-large">
+              <li data-fact="N:16" data-i18n="evidence.p1">Bilingual: English and 繁體中文.</li>
+              <li data-fact="N:16" data-i18n="evidence.p2">Filterable cases, with steps, expected and actual results.</li>
+              <li data-fact="N:16" data-i18n="evidence.p3">Evidence thumbnails attached.</li>
+            </ul>
+            <p class="evidence-line" data-fact="K:F08 K:F09" data-i18n="evidence.writeback">Results are written back to Linear and projected to Sheets.</p>
+            <div class="weekly" data-fact="N:17">
+              <p class="weekly-value" data-i18n="evidence.weeklyValue">67</p>
+              <p class="weekly-label" data-i18n="evidence.weekly">other tabs verified unchanged, after the weekly report added one new tab.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section hotfix" id="hotfix">
+      <div class="container">
+        <p class="kicker" data-i18n="hotfix.kicker">Case study</p>
+        <h2 data-i18n="hotfix.title">Production. No time.</h2>
+        <p class="lead narrow" data-fact="K:F84" data-i18n="hotfix.sub">A security hotfix lands. Four agents. One afternoon.</p>
+
+        <div class="tiles tiles-5">
+          <div class="tile reveal" data-fact="K:F86">
+            <p class="tile-value" data-i18n="hotfix.v1">201</p>
+            <p class="tile-label" data-i18n="hotfix.t1">runs</p>
+          </div>
+          <div class="tile reveal" data-fact="K:F86">
+            <p class="tile-value" data-i18n="hotfix.v2">171</p>
+            <p class="tile-label" data-i18n="hotfix.t2">unique cases</p>
+          </div>
+          <div class="tile reveal" data-fact="K:F88">
+            <p class="tile-value" data-i18n="hotfix.v3">0</p>
+            <p class="tile-label" data-i18n="hotfix.t3">mainnet signatures during the run</p>
+          </div>
+          <div class="tile reveal" data-fact="K:F90">
+            <p class="tile-value" data-i18n="hotfix.v4">2</p>
+            <p class="tile-label" data-i18n="hotfix.t4">signing attempts stopped</p>
+          </div>
+          <div class="tile reveal" data-fact="K:F91">
+            <p class="tile-value" data-i18n="hotfix.v5">3</p>
+            <p class="tile-label" data-i18n="hotfix.t5">risks flagged for dev</p>
+          </div>
+        </div>
+
+        <p class="honest" data-fact="K:F91">
+          <span class="honest-mark" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5 21.5 20H2.5L12 3.5Z"></path><path d="M12 9v5"></path><circle cx="12" cy="17" r=".7" fill="currentColor" stroke="none"></circle></svg>
+          </span>
+          <span data-i18n="hotfix.honest">The three risks are unconfirmed, and whether they predate the fix is not yet known.</span>
+        </p>
+      </div>
+    </section>
+
+    <section class="section safety" id="safety">
+      <div class="container">
+        <p class="kicker" data-i18n="safety.kicker">Honest limits</p>
+        <h2 data-i18n="safety.title">What is guarded — and what is not.</h2>
+
+        <div class="safety-grid">
+          <div class="safety-col guarded reveal">
+            <h3 data-i18n="safety.guarded">Guarded</h3>
+            <ul>
+              <li data-fact="K:F49"><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7.5"></path></svg></span><span data-i18n="safety.g1">Worktree isolation</span></li>
+              <li data-fact="K:F48"><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7.5"></path></svg></span><span data-i18n="safety.g2">Two-step confirm</span></li>
+              <li data-fact="K:F50"><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7.5"></path></svg></span><span data-i18n="safety.g3">Push blocked</span></li>
+              <li data-fact="K:F30"><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7.5"></path></svg></span><span data-i18n="safety.g4">Secrets stripped</span></li>
+              <li data-fact="K:F51"><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7.5"></path></svg></span><span data-i18n="safety.g5">Post-run checks</span></li>
+              <li data-fact="K:F52"><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7.5"></path></svg></span><span data-i18n="safety.g6">Read-only review</span></li>
+              <li data-fact="N:08"><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7.5"></path></svg></span><span data-i18n="safety.g7">Human final acceptance</span></li>
+            </ul>
+          </div>
+
+          <div class="safety-col not-yet reveal">
+            <h3 data-i18n="safety.notYet">Not yet</h3>
+            <ul>
+              <li data-fact="K:F54"><span class="dash" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M6 12h12"></path></svg></span><span data-i18n="safety.n1">Build mode has no per-tool approval gate.</span></li>
+              <li data-fact="K:F55"><span class="dash" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M6 12h12"></path></svg></span><span data-i18n="safety.n2">The push guard is a brake, not a sandbox.</span></li>
+              <li data-fact="K:F04 K:F39"><span class="dash" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M6 12h12"></path></svg></span><span data-i18n="safety.n3">It runs on one Mac; sleep or a reboot stops it.</span></li>
+              <li data-fact="K:F56 N:18"><span class="dash" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M6 12h12"></path></svg></span><span data-i18n="safety.n4">The shared remote repository is on hold.</span></li>
+            </ul>
+          </div>
+        </div>
+
+        <p class="safety-line" data-i18n="safety.closing">We would rather say this here than discover it in production.</p>
+      </div>
+    </section>
+
+    <section class="section start" id="start">
+      <div class="container">
+        <p class="kicker" data-i18n="start.kicker">Get started</p>
+        <h2 data-i18n="start.title">Start in dry-run.</h2>
+
+        <ol class="start-steps reveal">
+          <li>
+            <span class="run-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="m10 8.5 5 3.5-5 3.5v-7Z"></path></svg>
+            </span>
+            <h3 data-i18n="start.step1.title">Dry-run</h3>
+            <p data-i18n="start.step1.body">Run the loop without changing anything.</p>
+          </li>
+          <li>
+            <span class="run-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16"></path><path d="M4 12h16"></path><path d="M4 18h10"></path><circle cx="18.5" cy="18" r="2.5"></circle></svg>
+            </span>
+            <h3 data-i18n="start.step2.title">Doctor clean</h3>
+            <p data-fact="K:F66" data-i18n="start.step2.body">Reference machine: 22 ok, 1 optional warning, 0 fail.</p>
+          </li>
+          <li>
+            <span class="run-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.2"></circle><path d="M3.5 19a5.5 5.5 0 0 1 11 0"></path><path d="M16 5.5a3.2 3.2 0 0 1 0 6"></path><path d="M17 14.5a5.5 5.5 0 0 1 3.5 4.5"></path></svg>
+            </span>
+            <h3 data-i18n="start.step3.title">One executor</h3>
+            <p data-fact="K:F67" data-i18n="start.step3.body">Confirm nobody else on the team is the live executor.</p>
+          </li>
+          <li>
+            <span class="run-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5c3.6 1.5 6 4.2 6 8.2 0 3.6-2.4 6.7-6 8.8-3.6-2.1-6-5.2-6-8.8 0-4 2.4-6.7 6-8.2Z"></path><path d="m9 12 2 2 4-4"></path></svg>
+            </span>
+            <h3 data-i18n="start.step4.title">Live</h3>
+            <p data-i18n="start.step4.body">Switch over, then write back where the team looks.</p>
+          </li>
+        </ol>
+
+        <p class="doc-line" data-fact="K:F65 K:F67">
+          <span class="doc-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3h7l4 4v14H7z"></path><path d="M14 3v4h4"></path><path d="M9.5 12h6"></path><path d="M9.5 16h4"></path></svg>
+          </span>
+          <span data-i18n="start.doc">Read docs/ONBOARDING.md in the qa-factory repository.</span>
+        </p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div>
+        <p class="footer-brand" data-i18n="footer.brand">Chiliz QA Ecosystem</p>
+        <p class="footer-fact" data-fact="N:01 N:03 N:11 N:13 N:14 N:17"><span data-i18n="footer.date">Facts as of 15 Nov 2026.</span></p>
+        <p class="footer-claim" data-i18n="footer.claim">Every number on this page is traced to a fact register.</p>
+      </div>
+      <div class="footer-right">
+        <div class="lang" role="group" aria-label="Language" data-i18n-aria="a11y.lang">
+          <button type="button" data-lang="en" aria-pressed="true" aria-label="Show this page in English" data-i18n-aria="a11y.langEn">EN</button>
+          <span class="lang-sep" aria-hidden="true">|</span>
+          <button type="button" data-lang="zh" aria-pressed="false" aria-label="Show this page in Traditional Chinese" data-i18n-aria="a11y.langZh">中文</button>
+        </div>
+        <a class="back-top" href="#top"><span data-i18n="footer.top">Back to top</span> <span aria-hidden="true">↑</span></a>
+      </div>
+    </div>
+  </footer>
+
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image preview" data-i18n-aria="lightbox.label" hidden>
+    <div class="lightbox-bar">
+      <p class="lightbox-caption" id="lightbox-caption"></p>
+      <button class="lightbox-close" type="button" id="lightbox-close">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="m6 6 12 12"></path><path d="m18 6-12 12"></path></svg>
+        <span data-i18n="lightbox.close">Close</span>
+      </button>
+    </div>
+    <button class="lightbox-nav lightbox-prev" type="button" id="lightbox-prev" aria-label="Previous image" data-i18n-aria="lightbox.prev">
+      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m14.5 5-7 7 7 7"></path></svg>
+    </button>
+    <img class="lightbox-img" id="lightbox-img" alt="Enlarged screenshot" data-i18n-alt="lightbox.alt">
+    <button class="lightbox-nav lightbox-next" type="button" id="lightbox-next" aria-label="Next image" data-i18n-aria="lightbox.next">
+      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9.5 5 7 7-7 7"></path></svg>
+    </button>
+    <p class="lightbox-hint" data-i18n="lightbox.hint">Use the arrow keys to move, Esc to close.</p>
+  </div>
+
+  <script src="assets/js/i18n.js"></script>
+  <script src="assets/js/site.js"></script>
+</body>
+</html>
